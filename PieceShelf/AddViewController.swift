@@ -96,6 +96,30 @@ class AddViewController: UIViewController {
         present(actionSheet, animated: true)
     }
     
+    // 카테고리 선택 버튼을 눌렀을 때.
+    @IBAction func selectCatecory(_ sender: Any) {
+        let actionSheet = UIAlertController()
+        
+        let movie = UIAlertAction(title: "Book", style: .default, handler: { _ in
+            self.catecoryField.setTitle("Book", for: .normal)
+        })
+
+        let book = UIAlertAction(title: "Movie", style: .default, handler: { _ in
+            self.catecoryField.setTitle("Movie", for: .normal)
+        })
+        
+        let exhibition = UIAlertAction(title: "Exhibition", style: .default, handler: { _ in
+            self.catecoryField.setTitle("Exhibition", for: .normal)
+        })
+        
+        actionSheet.addAction(movie)
+        actionSheet.addAction(book)
+        actionSheet.addAction(exhibition)
+        actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        
+        present(actionSheet, animated: true)
+    }
+    
 }
 
 // UIImagePicker 추가
