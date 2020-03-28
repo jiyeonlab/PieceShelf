@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -67,23 +68,90 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aVw-P9-InS">
+                                <rect key="frame" x="20" y="471" width="374.5" height="103"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qkj-8Y-WSx">
+                                        <rect key="frame" x="0.0" y="0.0" width="374.5" height="29"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yq-RR-qOR">
+                                                <rect key="frame" x="0.0" y="4.5" width="34.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="제목을 입력하세요" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xWm-xk-Np0">
+                                                <rect key="frame" x="42.5" y="5.5" width="332" height="18.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jO7-D7-cqu">
+                                        <rect key="frame" x="0.0" y="37" width="374.5" height="29"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCn-zq-BUB">
+                                                <rect key="frame" x="0.0" y="4.5" width="37" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBs-I0-Xc6">
+                                                <rect key="frame" x="45" y="0.0" width="329.5" height="29"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <state key="normal" title="날짜를 선택하세요">
+                                                    <color key="titleColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="selectDate:" destination="qCX-V4-4a9" eventType="touchUpInside" id="AWY-VP-V8Q"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="177" translatesAutoresizingMaskIntoConstraints="NO" id="7BA-8a-xXz">
+                                        <rect key="frame" x="0.0" y="74" width="374.5" height="29"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7E8-3H-VJb">
+                                                <rect key="frame" x="0.0" y="4.5" width="72.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KcX-K5-Bba">
+                                                <rect key="frame" x="249.5" y="0.0" width="125" height="29"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <state key="normal" title="카테고리를 선택하세요">
+                                                    <color key="titleColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="dK5-Rw-Ipx" firstAttribute="top" secondItem="U6j-OJ-E0t" secondAttribute="bottom" constant="165" id="1A5-Cr-l3J"/>
                             <constraint firstItem="U6j-OJ-E0t" firstAttribute="trailing" secondItem="Os9-L0-5FC" secondAttribute="trailing" id="1fi-6F-cmO"/>
+                            <constraint firstItem="aVw-P9-InS" firstAttribute="leading" secondItem="Os9-L0-5FC" secondAttribute="leading" constant="20" id="3Ol-VB-Akb"/>
                             <constraint firstItem="FmG-t5-EWn" firstAttribute="trailing" secondItem="Os9-L0-5FC" secondAttribute="trailing" id="4I7-GJ-VSx"/>
                             <constraint firstItem="FmG-t5-EWn" firstAttribute="leading" secondItem="Os9-L0-5FC" secondAttribute="leading" id="7iU-IW-Tne"/>
                             <constraint firstItem="FmG-t5-EWn" firstAttribute="top" secondItem="U6j-OJ-E0t" secondAttribute="bottom" id="K2w-Xs-FWv"/>
                             <constraint firstItem="U6j-OJ-E0t" firstAttribute="leading" secondItem="Os9-L0-5FC" secondAttribute="leading" id="OSN-fj-zoN"/>
                             <constraint firstItem="FmG-t5-EWn" firstAttribute="top" secondItem="U6j-OJ-E0t" secondAttribute="bottom" id="QLa-dz-pvP"/>
                             <constraint firstItem="dK5-Rw-Ipx" firstAttribute="centerX" secondItem="U6j-OJ-E0t" secondAttribute="centerX" id="cWo-np-yg8"/>
+                            <constraint firstItem="Os9-L0-5FC" firstAttribute="trailing" secondItem="aVw-P9-InS" secondAttribute="trailing" constant="19.5" id="f52-eN-eka"/>
+                            <constraint firstItem="aVw-P9-InS" firstAttribute="top" secondItem="FmG-t5-EWn" secondAttribute="bottom" constant="16" id="oK2-dF-Jly"/>
                             <constraint firstItem="U6j-OJ-E0t" firstAttribute="top" secondItem="Os9-L0-5FC" secondAttribute="top" id="ufk-k0-Bsw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Os9-L0-5FC"/>
                     </view>
                     <connections>
+                        <outlet property="catecoryField" destination="KcX-K5-Bba" id="yG4-gx-kno"/>
+                        <outlet property="dateField" destination="LBs-I0-Xc6" id="Xlr-NQ-SCJ"/>
                         <outlet property="imageView" destination="FmG-t5-EWn" id="jyb-lC-dug"/>
+                        <outlet property="imageViewHeight" destination="KA3-uH-NiS" id="BgP-Ef-P89"/>
+                        <outlet property="titleField" destination="xWm-xk-Np0" id="OGu-WG-cVF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rwb-J8-Rfe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

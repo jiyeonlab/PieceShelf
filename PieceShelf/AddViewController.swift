@@ -13,6 +13,20 @@ class AddViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     lazy var imagePicker = UIImagePickerController()
+    @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var titleField: UITextField!
+    @IBOutlet weak var dateField: UIButton!
+    @IBOutlet weak var catecoryField: UIButton!
+    
+    lazy var datePickerView: UIDatePicker = {
+        let picker = UIDatePicker()
+        
+        picker.datePickerMode = .date
+        picker.locale = Locale(identifier: "ko_KR")
+        
+        return picker
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +36,9 @@ class AddViewController: UIViewController {
         
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        
+        // imageView Height 조정
+        imageViewHeight.constant = view.frame.height / Constant.imageViewHeightRatio
     }
     
     @IBAction func tappedBack(_ sender: Any) {
@@ -56,6 +73,29 @@ class AddViewController: UIViewController {
         
         present(alert, animated: true)
     }
+    
+    // 날짜 선택 버튼을 눌렀을 때.
+    @IBAction func selectDate(_ sender: Any) {
+        let actionSheet = UIAlertController()
+        
+        // ActionSheet에 DatePicker 추가
+        let datePicker = UIViewController()
+        datePicker.view = datePickerView
+        datePicker.preferredContentSize.height = Constant.datePickerHeight
+        actionSheet.setValue(datePicker, forKey: "contentViewController")
+        
+        actionSheet.addAction(UIAlertAction(title: "저장", style: .default, handler: { _ in
+            let date = self.datePickerView.date
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+
+            self.dateField.setTitle(dateFormatter.string(from: date), for: .normal)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel))
+        
+        present(actionSheet, animated: true)
+    }
+    
 }
 
 // UIImagePicker 추가
