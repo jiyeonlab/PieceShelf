@@ -113,3 +113,6 @@ iOSInjectionProject/
 
 # API 키 담겨 있는 파일 추가
 APIKey.swift
+
+# firebase plist 파일 
+GoogleService-Info.plist
