@@ -21,6 +21,8 @@ class WebSearchViewController: UIViewController {
         super.viewDidLoad()
 
         searchBar.delegate = self
+        
+        collectionView.dataSource = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -72,7 +74,7 @@ extension WebSearchViewController: UISearchBarDelegate {
                     result.items.forEach { index in
                         self.thumbnail.append(index.thumbnail ?? "")
                     }
-                    
+                    self.collectionView.reloadData()
                 }catch let error{
                     print("에러 1 : \(error.localizedDescription)")
                 }
@@ -82,4 +84,43 @@ extension WebSearchViewController: UISearchBarDelegate {
             }
         }
     }
+}
+
+extension WebSearchViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return thumbnail.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThumbnailCollectionViewCell.identifier, for: indexPath)
+        
+        guard let thumbnailCell = cell as? ThumbnailCollectionViewCell else {
+            return cell
+        }
+        
+        let thumbnailInfo = thumbnail[indexPath.item]
+        
+        // 기존에 있는 이미지를 없앰.
+        thumbnailCell.imageView.image = nil
+        
+        DispatchQueue.global().async {
+            guard let thumbnailURL = URL(string: thumbnailInfo) else {
+                return
+            }
+            guard let thumbnail = try? Data(contentsOf: thumbnailURL) else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                if let index = collectionView.indexPath(for: thumbnailCell) {
+                    if index.item == indexPath.item {
+                        thumbnailCell.imageView.image = UIImage(data: thumbnail)
+                    }
+                }
+            }
+        }
+        return cell
+    }
+    
+    
 }
