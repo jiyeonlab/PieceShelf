@@ -11,11 +11,17 @@ import UIKit
 class AddViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
+    
+    lazy var imagePicker = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showActionSheet(_:)))
         imageView.addGestureRecognizer(tapGesture)
+        
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
     }
     
     @IBAction func tappedBack(_ sender: Any) {
@@ -33,8 +39,12 @@ class AddViewController: UIViewController {
             webSearchVC.modalPresentationStyle = .fullScreen
             self.present(webSearchVC, animated: true)
         }
-        let albumSearch = UIAlertAction(title: "앨범에서 가져오기", style: .default, handler: nil)
-        let camera = UIAlertAction(title: "카메라로 촬영하기", style: .default, handler: nil)
+        let albumSearch = UIAlertAction(title: "앨범에서 가져오기", style: .default) { _ in
+            self.openAlbum()
+        }
+        let camera = UIAlertAction(title: "카메라로 촬영하기", style: .default) { _ in
+            self.openCamera()
+        }
         
         alert.addAction(webSearch)
         alert.addAction(albumSearch)
@@ -44,3 +54,23 @@ class AddViewController: UIViewController {
         present(alert, animated: true)
     }
 }
+
+// UIImagePicker 추가
+extension AddViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    
+    func openAlbum() {
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true)
+    }
+    
+    func openCamera() {
+        if (UIImagePickerController.isSourceTypeAvailable(.camera)){
+            imagePicker.sourceType = .camera
+            present(imagePicker, animated: true)
+        }else{
+            print("Camera not available")
+        }
+        
+    }
+}
+
