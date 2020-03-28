@@ -18,6 +18,7 @@ class AddViewController: UIViewController {
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var dateField: UIButton!
     @IBOutlet weak var catecoryField: UIButton!
+    @IBOutlet weak var memoField: UITextView!
     
     lazy var datePickerView: UIDatePicker = {
         let picker = UIDatePicker()
