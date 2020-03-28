@@ -15,6 +15,7 @@
 		9054ED84242F14EE00D28C20 /* PieceShelfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054ED83242F14EE00D28C20 /* PieceShelfTests.swift */; };
 		9054ED8F242F164800D28C20 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054ED8E242F164800D28C20 /* MainViewController.swift */; };
 		9054ED91242F166100D28C20 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054ED90242F166100D28C20 /* AddViewController.swift */; };
+		9054ED94242F1A5000D28C20 /* WebSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054ED93242F1A5000D28C20 /* WebSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		9054ED85242F14EE00D28C20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9054ED8E242F164800D28C20 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9054ED90242F166100D28C20 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		9054ED93242F1A5000D28C20 /* WebSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				9054ED72242F14ED00D28C20 /* Main.storyboard */,
 				9054ED8E242F164800D28C20 /* MainViewController.swift */,
 				9054ED90242F166100D28C20 /* AddViewController.swift */,
+				9054ED93242F1A5000D28C20 /* WebSearchViewController.swift */,
 			);
 			path = PieceShelf;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9054ED94242F1A5000D28C20 /* WebSearchViewController.swift in Sources */,
 				9054ED8F242F164800D28C20 /* MainViewController.swift in Sources */,
 				9054ED6D242F14ED00D28C20 /* AppDelegate.swift in Sources */,
 				9054ED91242F166100D28C20 /* AddViewController.swift in Sources */,
