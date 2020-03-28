@@ -48,7 +48,11 @@
                                                 <action selector="tappedBack:" destination="qCX-V4-4a9" id="dKP-Xi-lIs"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="cJa-kj-FQy"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="cJa-kj-FQy">
+                                            <connections>
+                                                <action selector="tappedSave:" destination="qCX-V4-4a9" id="4Es-nm-34t"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

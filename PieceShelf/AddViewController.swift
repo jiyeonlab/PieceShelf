@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AddViewController: UIViewController {
     
@@ -19,6 +20,12 @@ class AddViewController: UIViewController {
     @IBOutlet weak var dateField: UIButton!
     @IBOutlet weak var catecoryField: UIButton!
     @IBOutlet weak var memoField: UITextView!
+    
+    // Firebase DB 참조 및 정의
+    var ref: DatabaseReference!
+    
+    // 썸네일 저장해 둘 변수
+    var thumbnail: String?
     
     lazy var datePickerView: UIDatePicker = {
         let picker = UIDatePicker()
@@ -40,6 +47,10 @@ class AddViewController: UIViewController {
         
         // imageView Height 조정
         imageViewHeight.constant = view.frame.height / Constant.imageViewHeightRatio
+        
+        // Firebase DB 참조
+        ref = Database.database().reference()
+
     }
     
     @IBAction func tappedBack(_ sender: Any) {
@@ -121,6 +132,18 @@ class AddViewController: UIViewController {
         present(actionSheet, animated: true)
     }
     
+    // Save 버튼을 눌러, 입력한 정보들을 저장하고자 함.
+    @IBAction func tappedSave(_ sender: Any) {
+
+        guard let thumbnailInfo = thumbnail, let title = titleField.text, let date = dateField.titleLabel?.text, let catecory = catecoryField.titleLabel?.text, let memo = memoField.text else {
+            
+            // TODO : 하나라도 비어있을 경우, 경고창 띄워줘야함.
+            return
+        }
+        let newData = UserData(thumbnail: thumbnailInfo, date: date, memo: memo)
+        
+        ref.child(catecory).child(title).setValue(newData.toDictionary)
+    }
 }
 
 // UIImagePicker 추가
@@ -161,6 +184,8 @@ extension AddViewController: SendThumbnailDelegate {
         
         imageView.image = nil
         imageView.backgroundColor = .clear
+        
+        thumbnail = url
         
         DispatchQueue.global().async {
             guard let thumbnailURL = URL(string: url) else {

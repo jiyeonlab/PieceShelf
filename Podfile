@@ -8,6 +8,8 @@ target 'PieceShelf' do
   # Pods for PieceShelf
   pod 'Alamofire', '~> 5.0'
   pod 'Firebase/Analytics'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
   target 'PieceShelfTests' do
     inherit! :search_paths
     # Pods for testing
