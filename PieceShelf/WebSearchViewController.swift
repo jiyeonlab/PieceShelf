@@ -17,12 +17,16 @@ class WebSearchViewController: UIViewController {
     // collectionView에 띄우기 위한 이미지 thumbnail 저장
     var thumbnail: [String] = []
     
+    // SendThumbnailDelegate 변수
+    var sendThumbnailDelegate: SendThumbnailDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         searchBar.delegate = self
         
         collectionView.dataSource = self
+        collectionView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -123,4 +127,22 @@ extension WebSearchViewController: UICollectionViewDataSource {
     }
     
     
+}
+
+extension WebSearchViewController: UICollectionViewDelegate {
+    
+    // CollectionView에서 Cell을 선택했을 때, 호출되는 메소드
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedThumbnail = thumbnail[indexPath.item]
+        
+        sendThumbnailDelegate?.sendThumbnail(url: selectedThumbnail)
+        
+        // WebSearchVC를 dismiss하여, AddVC로 감.
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+// WebSearchVC에서 선택한 썸네일을 AddVC에 띄워주기 위해 선언한 Delegate 프로토콜
+protocol SendThumbnailDelegate {
+    func sendThumbnail(url: String)
 }

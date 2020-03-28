@@ -36,6 +36,9 @@ class AddViewController: UIViewController {
                 return
             }
             
+            // WebSearchVC에서 선택한 썸네일 데이터를 받기 위해, 추가
+            webSearchVC.sendThumbnailDelegate = self
+            
             webSearchVC.modalPresentationStyle = .fullScreen
             self.present(webSearchVC, animated: true)
         }
@@ -74,3 +77,25 @@ extension AddViewController: UIImagePickerControllerDelegate & UINavigationContr
     }
 }
 
+// WebSearchVC로부터 Thumbnail을 받기 위해.
+extension AddViewController: SendThumbnailDelegate {
+    func sendThumbnail(url: String) {
+        
+        imageView.image = nil
+        imageView.backgroundColor = .clear
+        
+        DispatchQueue.global().async {
+            guard let thumbnailURL = URL(string: url) else {
+                return
+            }
+            guard let thumbnail = try? Data(contentsOf: thumbnailURL) else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.imageView.image = UIImage(data: thumbnail)
+                self.imageView.contentMode = .scaleAspectFit
+            }
+        }
+    }
+}
