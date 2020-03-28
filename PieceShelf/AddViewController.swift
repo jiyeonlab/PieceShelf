@@ -9,14 +9,14 @@
 import UIKit
 
 class AddViewController: UIViewController {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     
     lazy var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showActionSheet(_:)))
         imageView.addGestureRecognizer(tapGesture)
         
@@ -73,7 +73,20 @@ extension AddViewController: UIImagePickerControllerDelegate & UINavigationContr
         }else{
             print("Camera not available")
         }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let selectedImage = info[.editedImage] as? UIImage {
+            self.imageView.image = selectedImage
+            self.imageView.contentMode = .scaleAspectFit
+            self.imageView.backgroundColor = .clear
+        }
         
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 }
 
