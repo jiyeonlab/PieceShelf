@@ -22,6 +22,7 @@
 		9054ED98242F2A7300D28C20 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054ED97242F2A7300D28C20 /* SearchResult.swift */; };
 		9054ED9A242F310100D28C20 /* ThumbnailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054ED99242F310100D28C20 /* ThumbnailCollectionViewCell.swift */; };
 		9054ED9C242F37D500D28C20 /* GlobalConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054ED9B242F37D500D28C20 /* GlobalConstant.swift */; };
+		9054EDA4242F861D00D28C20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9054EDA3242F861D00D28C20 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		9054ED97242F2A7300D28C20 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		9054ED99242F310100D28C20 /* ThumbnailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCollectionViewCell.swift; sourceTree = "<group>"; };
 		9054ED9B242F37D500D28C20 /* GlobalConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstant.swift; sourceTree = "<group>"; };
+		9054EDA3242F861D00D28C20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D57CDD3C168E4537A91F1435 /* Pods-PieceShelfTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PieceShelfTests.debug.xcconfig"; path = "Target Support Files/Pods-PieceShelfTests/Pods-PieceShelfTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +126,7 @@
 				9054ED97242F2A7300D28C20 /* SearchResult.swift */,
 				9054ED99242F310100D28C20 /* ThumbnailCollectionViewCell.swift */,
 				9054ED9B242F37D500D28C20 /* GlobalConstant.swift */,
+				9054EDA3242F861D00D28C20 /* GoogleService-Info.plist */,
 			);
 			path = PieceShelf;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9054ED79242F14EE00D28C20 /* LaunchScreen.storyboard in Resources */,
+				9054EDA4242F861D00D28C20 /* GoogleService-Info.plist in Resources */,
 				9054ED76242F14EE00D28C20 /* Assets.xcassets in Resources */,
 				9054ED74242F14ED00D28C20 /* Main.storyboard in Resources */,
 			);
