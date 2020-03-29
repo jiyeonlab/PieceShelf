@@ -21,6 +21,11 @@ class AddViewController: UIViewController {
     @IBOutlet weak var catecoryField: UIButton!
     @IBOutlet weak var memoField: UITextView!
     
+    // 카테고리 picker 추가
+    var customPickerView: UIPickerView?
+    
+    var selectedCatecoryIndex: Int = 0
+    
     // Firebase DB 참조 및 정의
     var ref: DatabaseReference!
     
@@ -118,22 +123,16 @@ class AddViewController: UIViewController {
     @IBAction func selectCatecory(_ sender: Any) {
         let actionSheet = UIAlertController()
         
-        let movie = UIAlertAction(title: "Book", style: .default, handler: { _ in
-            self.catecoryField.setTitle("Book", for: .normal)
-        })
-
-        let book = UIAlertAction(title: "Movie", style: .default, handler: { _ in
-            self.catecoryField.setTitle("Movie", for: .normal)
-        })
+        // ActionSheet에 카테고리 선택을 위한 Picker 추가
+        let catecoryPicker = UIViewController()
+        configPickerView()
+        catecoryPicker.view = customPickerView
+        catecoryPicker.preferredContentSize.height = Constant.catecoryPickerHeight
+        actionSheet.setValue(catecoryPicker, forKey: "contentViewController")
         
-        let exhibition = UIAlertAction(title: "Exhibition", style: .default, handler: { _ in
-            self.catecoryField.setTitle("Exhibition", for: .normal)
-        })
-        
-        actionSheet.addAction(movie)
-        actionSheet.addAction(book)
-        actionSheet.addAction(exhibition)
-        actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "완료", style: .default, handler: { [weak self] action in
+            self?.catecoryField.titleLabel?.text = Catecory.shared.catecoryList[self?.selectedCatecoryIndex ?? 0]
+        }))
         
         present(actionSheet, animated: true)
     }
@@ -246,5 +245,42 @@ extension AddViewController: SendThumbnailDelegate {
                 self.imageView.contentMode = .scaleAspectFit
             }
         }
+    }
+}
+
+// Catecory Picker View 설정
+extension AddViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    func configPickerView() {
+        customPickerView = UIPickerView()
+        
+        customPickerView?.dataSource = self
+        customPickerView?.delegate = self
+        
+        // component에서 보여줄 초기값
+        customPickerView?.selectRow(0, inComponent: 0, animated: true)
+        
+        selectedCatecoryIndex = 0
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Catecory.shared.catecoryList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return Catecory.shared.catecoryList[row]
+    }
+    
+    // 각 row의 높이 설정
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return Constant.pickerRowHeight
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedCatecoryIndex = row
     }
 }
