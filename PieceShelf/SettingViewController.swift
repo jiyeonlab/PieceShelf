@@ -23,6 +23,7 @@ class SettingViewController: UIViewController {
     var editingMode = false
     
     override func viewDidLoad() {
+        print("셋팅 뷰 did load")
         super.viewDidLoad()
 
         tableView.dataSource = self
@@ -31,20 +32,19 @@ class SettingViewController: UIViewController {
         ref = Database.database().reference()
         
         readCatecoryList()
+        
+        // 혹시, load 된 후에 Catecory List가 다 받아지면 노티 받기 위함.
+        NotificationCenter.default.addObserver(self, selector: #selector(showCatecory(_:)), name: LoadCatecoryListNotification, object: nil)
     }
     
+    @objc func showCatecory(_ noti: Notification) {
+        readCatecoryList()
+    }
+
     // firebase db에서 카테고리 종류 불러오기
     func readCatecoryList() {
-        ref.child("UserData").observeSingleEvent(of: .value) { (snapshot) in
-            
-            for child in snapshot.children {
-                let snap = child as! DataSnapshot
-                let key = snap.key
-                self.catecory.append(key)
-            }
-            print("카테고리 목록 === \(self.catecory)")
-            self.tableView.reloadData()
-        }
+        catecory = Catecory.shared.catecoryList
+        self.tableView.reloadData()
     }
     
     // 카테고리 추가하기 버튼

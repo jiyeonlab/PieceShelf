@@ -18,3 +18,6 @@ enum ThumbnailState {
     case web
     case photo
 }
+
+// DB로부터 카테고리 항목 리스트를 다 불러왔을 때 보내는 noti 이름
+let LoadCatecoryListNotification = Notification.Name("LoadCatecoryList")
