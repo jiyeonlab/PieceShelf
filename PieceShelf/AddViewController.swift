@@ -180,6 +180,8 @@ class AddViewController: UIViewController {
         default:
             return
         }
+        
+        dismiss(animated: true, completion: nil)
     }
 }
 
