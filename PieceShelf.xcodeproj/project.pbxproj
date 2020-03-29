@@ -24,6 +24,8 @@
 		9054ED9C242F37D500D28C20 /* GlobalConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054ED9B242F37D500D28C20 /* GlobalConstant.swift */; };
 		9054EDA4242F861D00D28C20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9054EDA3242F861D00D28C20 /* GoogleService-Info.plist */; };
 		9054EDA6242F933700D28C20 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054EDA5242F933600D28C20 /* UserData.swift */; };
+		9054EDAA243086A100D28C20 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054EDA9243086A100D28C20 /* SettingViewController.swift */; };
+		9054EDAC24308FD700D28C20 /* CatecoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054EDAB24308FD700D28C20 /* CatecoryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		9054ED9B242F37D500D28C20 /* GlobalConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstant.swift; sourceTree = "<group>"; };
 		9054EDA3242F861D00D28C20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9054EDA5242F933600D28C20 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		9054EDA9243086A100D28C20 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		9054EDAB24308FD700D28C20 /* CatecoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatecoryTableViewCell.swift; sourceTree = "<group>"; };
 		D57CDD3C168E4537A91F1435 /* Pods-PieceShelfTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PieceShelfTests.debug.xcconfig"; path = "Target Support Files/Pods-PieceShelfTests/Pods-PieceShelfTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,8 +132,10 @@
 				9054ED97242F2A7300D28C20 /* SearchResult.swift */,
 				9054ED99242F310100D28C20 /* ThumbnailCollectionViewCell.swift */,
 				9054ED9B242F37D500D28C20 /* GlobalConstant.swift */,
+				9054EDAB24308FD700D28C20 /* CatecoryTableViewCell.swift */,
 				9054EDA3242F861D00D28C20 /* GoogleService-Info.plist */,
 				9054EDA5242F933600D28C20 /* UserData.swift */,
+				9054EDA9243086A100D28C20 /* SettingViewController.swift */,
 			);
 			path = PieceShelf;
 			sourceTree = "<group>";
@@ -333,6 +339,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9054ED9C242F37D500D28C20 /* GlobalConstant.swift in Sources */,
+				9054EDAC24308FD700D28C20 /* CatecoryTableViewCell.swift in Sources */,
+				9054EDAA243086A100D28C20 /* SettingViewController.swift in Sources */,
 				9054ED94242F1A5000D28C20 /* WebSearchViewController.swift in Sources */,
 				9054ED98242F2A7300D28C20 /* SearchResult.swift in Sources */,
 				9054EDA6242F933700D28C20 /* UserData.swift in Sources */,
