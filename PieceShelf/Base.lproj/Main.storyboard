@@ -245,9 +245,15 @@
                                 <action selector="addCatecory:" destination="xCH-wC-j2w" id="91e-ZT-NNE"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="편집" id="dsu-hY-Q5S"/>
+                        <barButtonItem key="rightBarButtonItem" title="편집" id="dsu-hY-Q5S">
+                            <connections>
+                                <action selector="editCatecory:" destination="xCH-wC-j2w" id="Orb-t4-gpy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="gJk-AI-iHg" id="VmZ-Dy-jcX"/>
+                        <outlet property="editButton" destination="dsu-hY-Q5S" id="DaV-Lc-RLQ"/>
                         <outlet property="tableView" destination="6mN-yy-JHX" id="ahG-ir-K7u"/>
                     </connections>
                 </viewController>

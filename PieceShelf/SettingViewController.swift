@@ -12,11 +12,15 @@ import Firebase
 class SettingViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    @IBOutlet weak var editButton: UIBarButtonItem!
     
     let sections = ["카테고리 추가 및 삭제"]
     
     var ref: DatabaseReference!
     var catecory: [String] = []
+    
+    var editingMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +82,27 @@ class SettingViewController: UIViewController {
         guard let newCatecory = catecory.last else { return }
         ref.child("UserData").child(newCatecory).updateChildValues(["Default": empty.toDictionary])
     }
+    
+    // Firebase에서 해당 카테고리 삭제하기
+    func deleteCatecory(what catecory: String) {
+        ref.child("UserData").child(catecory).removeValue()
+    }
+    
+    // 카테고리 편집하기
+    @IBAction func editCatecory(_ sender: Any) {
+        if !editingMode {
+            editingMode = !editingMode
+            addButton.isEnabled = false
+            editButton.title = "완료"
+            tableView.setEditing(true, animated: true)
+        }else{
+            editingMode = !editingMode
+            addButton.isEnabled = true
+            editButton.title = "편집"
+            tableView.setEditing(false, animated: true)
+        }
+       
+    }
 }
 
 extension SettingViewController: UITableViewDataSource {
@@ -102,5 +127,16 @@ extension SettingViewController: UITableViewDataSource {
         return catecoryCell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    // 편집 모드에서 왼쪽 버튼을 누를 경우, 테이블에서 삭제하고, 애니메이션까지 보여줌.
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        deleteCatecory(what: catecory[indexPath.row])
+        catecory.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+    }
     
 }
