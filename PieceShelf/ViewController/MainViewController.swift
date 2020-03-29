@@ -55,6 +55,7 @@ extension MainViewController: UITableViewDataSource {
         
         cell.presentDelegate = self
         cell.catecoryName.text = catecory[indexPath.row]
+        cell.fetchData(from: catecory[indexPath.row])
         return cell
     }
     

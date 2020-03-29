@@ -78,9 +78,10 @@ class SettingViewController: UIViewController {
     // 새롭게 추가한 카테고리 항목을 Firebase에 업데이트
     func uploadCatecory(){
         // TODO: 빈 딕셔너리를 추가하는게 맞는걸까?
-        let empty = UserData(thumbnail: "", date: "", memo: "")
+//        let empty = UserData(thumbnail: "", date: "", memo: "")
+        let empty = UserData(title: "Default", thumbnail: "", date: "", memo: "")
         guard let newCatecory = catecory.last else { return }
-        ref.child("UserData").child(newCatecory).updateChildValues(["Default": empty.toDictionary])
+        ref.child("UserData").child(newCatecory).child("Default").updateChildValues(empty.toDictionary)
     }
     
     // Firebase에서 해당 카테고리 삭제하기

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MainSectionTableViewCell: UITableViewCell {
     
@@ -17,6 +18,10 @@ class MainSectionTableViewCell: UITableViewCell {
     var presentDelegate: PresentDelegate?
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    // 현재 카테고리에 있는 title 저장
+    var items = [[String:Any]]()
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,15 +45,48 @@ class MainSectionTableViewCell: UITableViewCell {
         presentDelegate?.loadNewVC(by: catecory)
     }
     
+    // 해당하는 카테고리의 데이터를 불러옴
+    func fetchData(from currentCatecory: String) {
+                
+        Database.database().reference().child("UserData").child(currentCatecory).observeSingleEvent(of: .value) { (snapshot) in
+//            do {
+//                let data = try JSONSerialization.data(withJSONObject: snapshot.value, options: [])
+//                let userData = try JSONDecoder().decode([UserData].self, from: data)
+//                print("받은 데이터 정보 \(userData)")
+//
+//
+//            }catch let error {
+//                print("Fetch Error \(error)")
+//            }
+            
+            self.items.removeAll()
+            for child in snapshot.children {
+                let snap = child as! DataSnapshot
+                let key = snap.key
+                let value = snap.value as! [String:Any]
+
+                if key != "Default" {
+                    self.items.append(value)
+                }
+            }
+            print(self.items)
+            self.collectionView.reloadData()
+        }
+    }
 }
 
 extension MainSectionTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.identifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.identifier, for: indexPath) as? ItemCollectionViewCell else { return UICollectionViewCell() }
+        
+        cell.data = items[indexPath.item]
+        
+        // storage 검색을 위해 카테고리 값도 넘겨줘야함.
+        cell.catecory = catecoryName.text
         
         return cell
     }

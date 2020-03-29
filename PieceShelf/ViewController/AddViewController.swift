@@ -110,7 +110,7 @@ class AddViewController: UIViewController {
         actionSheet.addAction(UIAlertAction(title: "저장", style: .default, handler: { _ in
             let date = self.datePickerView.date
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+            dateFormatter.dateFormat = "yyyy-MM-dd"
 
             self.dateField.setTitle(dateFormatter.string(from: date), for: .normal)
         }))
@@ -152,9 +152,10 @@ class AddViewController: UIViewController {
                 // TODO : 하나라도 비어있을 경우, 경고창 띄워줘야함.
                 return
             }
-            let newData = UserData(thumbnail: thumbnailInfo, date: date, memo: memoField.text)
+//            let newData = UserData(thumbnail: thumbnailInfo, date: date, memo: memoField.text)
+            
+            let newData = UserData(title: title, thumbnail: thumbnailInfo, date: date, memo: memoField.text)
 
-//            ref.child(catecory).child(title).setValue(newData.toDictionary)
             ref.child("UserData").child(catecory).child(title).setValue(newData.toDictionary)
             
         case .photo:
@@ -162,7 +163,9 @@ class AddViewController: UIViewController {
             
             let identifier = String(describing: Date.init())
             
-            let newData = UserData(thumbnail: "Photo_\(identifier)", date: date, memo: memoField.text)
+//            let newData = UserData(thumbnail: "Photo_\(identifier)", date: date, memo: memoField.text)
+            
+            let newData = UserData(title: title, thumbnail: "Photo_\(identifier)", date: date, memo: memoField.text)
             
             guard let savedImg = image!.jpegData(compressionQuality: 0.75) else { return }
             let imageName = "Photo_\(identifier)"
