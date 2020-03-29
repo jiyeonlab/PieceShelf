@@ -240,7 +240,11 @@
                         <viewLayoutGuide key="safeArea" id="hyf-sN-wOy"/>
                     </view>
                     <navigationItem key="navigationItem" title="설정" id="x7X-Rs-iol">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="gJk-AI-iHg"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="gJk-AI-iHg">
+                            <connections>
+                                <action selector="addCatecory:" destination="xCH-wC-j2w" id="91e-ZT-NNE"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="편집" id="dsu-hY-Q5S"/>
                     </navigationItem>
                     <connections>

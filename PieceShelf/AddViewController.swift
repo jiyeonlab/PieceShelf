@@ -155,7 +155,8 @@ class AddViewController: UIViewController {
             }
             let newData = UserData(thumbnail: thumbnailInfo, date: date, memo: memoField.text)
 
-            ref.child(catecory).child(title).setValue(newData.toDictionary)
+//            ref.child(catecory).child(title).setValue(newData.toDictionary)
+            ref.child("UserData").child(catecory).child(title).setValue(newData.toDictionary)
             
         case .photo:
             // MARK: Firebase Storage 이용
@@ -176,7 +177,7 @@ class AddViewController: UIViewController {
                     print("업로드 완료")
                 }
             }
-            ref.child(catecory).child(title).setValue(newData.toDictionary)
+            ref.child("UserData").child(catecory).child(title).setValue(newData.toDictionary)
         default:
             return
         }
