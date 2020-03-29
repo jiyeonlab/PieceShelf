@@ -141,21 +141,31 @@ class AddViewController: UIViewController {
     // Save 버튼을 눌러, 입력한 정보들을 저장하고자 함.
     @IBAction func tappedSave(_ sender: Any) {
         
+        guard imageView.image != nil, let title = titleField.text, let date = dateField.titleLabel?.text, let catecory = catecoryField.titleLabel?.text else {
+            // TODO : 제목, 날짜, 카테고리 중 하나라도 비어있으면, 경고창 띄워야 함.
+            return
+        }
+        
         switch thumbnailState {
         case .web:
-            guard let thumbnailInfo = thumbnail, let title = titleField.text, let date = dateField.titleLabel?.text, let catecory = catecoryField.titleLabel?.text, let memo = memoField.text else {
+            guard let thumbnailInfo = thumbnail else {
                 
                 // TODO : 하나라도 비어있을 경우, 경고창 띄워줘야함.
                 return
             }
-            let newData = UserData(thumbnail: thumbnailInfo, date: date, memo: memo)
-            
+            let newData = UserData(thumbnail: thumbnailInfo, date: date, memo: memoField.text)
+
             ref.child(catecory).child(title).setValue(newData.toDictionary)
             
         case .photo:
             // MARK: Firebase Storage 이용
+            
+            let identifier = String(describing: Date.init())
+            
+            let newData = UserData(thumbnail: "Photo_\(identifier)", date: date, memo: memoField.text)
+            
             guard let savedImg = image!.jpegData(compressionQuality: 0.75) else { return }
-            let imageName = "000.jpg"
+            let imageName = "Photo_\(identifier)"
             
             let riversRef = Storage.storage().reference().child((catecoryField.titleLabel?.text)!).child(imageName)
             
@@ -166,6 +176,7 @@ class AddViewController: UIViewController {
                     print("업로드 완료")
                 }
             }
+            ref.child(catecory).child(title).setValue(newData.toDictionary)
         default:
             return
         }
