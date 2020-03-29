@@ -27,6 +27,12 @@ class AddViewController: UIViewController {
     // 썸네일 저장해 둘 변수
     var thumbnail: String?
     
+    // UIImagePicker를 통해 불러온 사진을 저장해 둘 변수
+    var image: UIImage?
+    
+    // 썸네일의 상태
+    var thumbnailState: ThumbnailState?
+    
     lazy var datePickerView: UIDatePicker = {
         let picker = UIDatePicker()
         
@@ -134,15 +140,35 @@ class AddViewController: UIViewController {
     
     // Save 버튼을 눌러, 입력한 정보들을 저장하고자 함.
     @IBAction func tappedSave(_ sender: Any) {
-
-        guard let thumbnailInfo = thumbnail, let title = titleField.text, let date = dateField.titleLabel?.text, let catecory = catecoryField.titleLabel?.text, let memo = memoField.text else {
+        
+        switch thumbnailState {
+        case .web:
+            guard let thumbnailInfo = thumbnail, let title = titleField.text, let date = dateField.titleLabel?.text, let catecory = catecoryField.titleLabel?.text, let memo = memoField.text else {
+                
+                // TODO : 하나라도 비어있을 경우, 경고창 띄워줘야함.
+                return
+            }
+            let newData = UserData(thumbnail: thumbnailInfo, date: date, memo: memo)
             
-            // TODO : 하나라도 비어있을 경우, 경고창 띄워줘야함.
+            ref.child(catecory).child(title).setValue(newData.toDictionary)
+            
+        case .photo:
+            // MARK: Firebase Storage 이용
+            guard let savedImg = image!.jpegData(compressionQuality: 0.75) else { return }
+            let imageName = "000.jpg"
+            
+            let riversRef = Storage.storage().reference().child((catecoryField.titleLabel?.text)!).child(imageName)
+            
+            riversRef.putData(savedImg, metadata: nil) { (metadata, error) in
+                if(error != nil){
+                    print("Error 발생 \(error?.localizedDescription)")
+                }else{
+                    print("업로드 완료")
+                }
+            }
+        default:
             return
         }
-        let newData = UserData(thumbnail: thumbnailInfo, date: date, memo: memo)
-        
-        ref.child(catecory).child(title).setValue(newData.toDictionary)
     }
 }
 
@@ -168,6 +194,11 @@ extension AddViewController: UIImagePickerControllerDelegate & UINavigationContr
             self.imageView.image = selectedImage
             self.imageView.contentMode = .scaleAspectFit
             self.imageView.backgroundColor = .clear
+            
+            // imagepicker에서 선택한 사진을 넣어주기
+            image = selectedImage
+            
+            thumbnailState = .photo
         }
         
         self.dismiss(animated: true, completion: nil)
@@ -186,6 +217,7 @@ extension AddViewController: SendThumbnailDelegate {
         imageView.backgroundColor = .clear
         
         thumbnail = url
+        thumbnailState = .web
         
         DispatchQueue.global().async {
             guard let thumbnailURL = URL(string: url) else {

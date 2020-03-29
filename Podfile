@@ -10,6 +10,7 @@ target 'PieceShelf' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Storage'
   target 'PieceShelfTests' do
     inherit! :search_paths
     # Pods for testing
