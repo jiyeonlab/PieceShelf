@@ -27,6 +27,9 @@
 		9054EDAA243086A100D28C20 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054EDA9243086A100D28C20 /* SettingViewController.swift */; };
 		9054EDAC24308FD700D28C20 /* CatecoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054EDAB24308FD700D28C20 /* CatecoryTableViewCell.swift */; };
 		9054EDAE2430B52B00D28C20 /* Catecory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054EDAD2430B52B00D28C20 /* Catecory.swift */; };
+		9054EDBB2430E74100D28C20 /* MainSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9054EDB92430E74100D28C20 /* MainSectionTableViewCell.swift */; };
+		9054EDBC2430E74100D28C20 /* MainSectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9054EDBA2430E74100D28C20 /* MainSectionTableViewCell.xib */; };
+		90798A942430EC5B005FFA27 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90798A932430EC5B005FFA27 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		9054EDA9243086A100D28C20 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		9054EDAB24308FD700D28C20 /* CatecoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatecoryTableViewCell.swift; sourceTree = "<group>"; };
 		9054EDAD2430B52B00D28C20 /* Catecory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catecory.swift; sourceTree = "<group>"; };
+		9054EDB92430E74100D28C20 /* MainSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSectionTableViewCell.swift; sourceTree = "<group>"; };
+		9054EDBA2430E74100D28C20 /* MainSectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainSectionTableViewCell.xib; sourceTree = "<group>"; };
+		90798A932430EC5B005FFA27 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D57CDD3C168E4537A91F1435 /* Pods-PieceShelfTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PieceShelfTests.debug.xcconfig"; path = "Target Support Files/Pods-PieceShelfTests/Pods-PieceShelfTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +133,9 @@
 				9054ED92242F167700D28C20 /* Supporting Files */,
 				9054ED7A242F14EE00D28C20 /* Info.plist */,
 				9054ED72242F14ED00D28C20 /* Main.storyboard */,
+				90798A932430EC5B005FFA27 /* DetailViewController.swift */,
+				9054EDB92430E74100D28C20 /* MainSectionTableViewCell.swift */,
+				9054EDBA2430E74100D28C20 /* MainSectionTableViewCell.xib */,
 				9054ED8E242F164800D28C20 /* MainViewController.swift */,
 				9054ED90242F166100D28C20 /* AddViewController.swift */,
 				9054ED93242F1A5000D28C20 /* WebSearchViewController.swift */,
@@ -257,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9054ED79242F14EE00D28C20 /* LaunchScreen.storyboard in Resources */,
+				9054EDBC2430E74100D28C20 /* MainSectionTableViewCell.xib in Resources */,
 				9054EDA4242F861D00D28C20 /* GoogleService-Info.plist in Resources */,
 				9054ED76242F14EE00D28C20 /* Assets.xcassets in Resources */,
 				9054ED74242F14ED00D28C20 /* Main.storyboard in Resources */,
@@ -343,12 +353,14 @@
 			files = (
 				9054ED9C242F37D500D28C20 /* GlobalConstant.swift in Sources */,
 				9054EDAC24308FD700D28C20 /* CatecoryTableViewCell.swift in Sources */,
+				90798A942430EC5B005FFA27 /* DetailViewController.swift in Sources */,
 				9054EDAA243086A100D28C20 /* SettingViewController.swift in Sources */,
 				9054ED94242F1A5000D28C20 /* WebSearchViewController.swift in Sources */,
 				9054ED98242F2A7300D28C20 /* SearchResult.swift in Sources */,
 				9054EDAE2430B52B00D28C20 /* Catecory.swift in Sources */,
 				9054EDA6242F933700D28C20 /* UserData.swift in Sources */,
 				9054ED8F242F164800D28C20 /* MainViewController.swift in Sources */,
+				9054EDBB2430E74100D28C20 /* MainSectionTableViewCell.swift in Sources */,
 				9054ED6D242F14ED00D28C20 /* AppDelegate.swift in Sources */,
 				9054ED91242F166100D28C20 /* AddViewController.swift in Sources */,
 				9054ED9A242F310100D28C20 /* ThumbnailCollectionViewCell.swift in Sources */,
