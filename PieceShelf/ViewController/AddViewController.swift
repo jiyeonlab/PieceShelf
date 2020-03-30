@@ -112,7 +112,7 @@ class AddViewController: UIViewController {
         actionSheet.addAction(UIAlertAction(title: "저장", style: .default, handler: { _ in
             let date = self.datePickerView.date
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy.MM.dd"
+            dateFormatter.dateFormat = "yyyy년 MM월 dd일"
 
             self.dateField.setTitle(dateFormatter.string(from: date), for: .normal)
         }))
