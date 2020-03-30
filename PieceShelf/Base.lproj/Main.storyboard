@@ -37,7 +37,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="W2q-CD-ErQ">
                             <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
-                                <segue destination="qCX-V4-4a9" kind="presentation" modalPresentationStyle="fullScreen" id="WXW-On-hN9"/>
+                                <segue destination="qCX-V4-4a9" kind="presentation" modalPresentationStyle="automatic" id="WXW-On-hN9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -55,21 +55,21 @@
             <objects>
                 <viewController id="qCX-V4-4a9" customClass="AddViewController" customModule="PieceShelf" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hFd-kh-pjf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U6j-OJ-E0t">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                 <items>
                                     <navigationItem title="Add" id="HkX-tJ-1jd">
-                                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="a65-LW-oEm">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" image="multiply" catalog="system" id="a65-LW-oEm">
                                             <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <connections>
                                                 <action selector="tappedBack:" destination="qCX-V4-4a9" id="dKP-Xi-lIs"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="cJa-kj-FQy">
-                                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="tappedSave:" destination="qCX-V4-4a9" id="4Es-nm-34t"/>
                                             </connections>
@@ -78,51 +78,51 @@
                                 </items>
                             </navigationBar>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FmG-t5-EWn">
-                                <rect key="frame" x="0.0" y="88" width="414" height="367"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="367"/>
                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="367" id="KA3-uH-NiS"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dK5-Rw-Ipx">
-                                <rect key="frame" x="197.5" y="253" width="19" height="36"/>
+                                <rect key="frame" x="197.5" y="221" width="19" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Xis-zg-7tB">
-                                <rect key="frame" x="20" y="470" width="374" height="392"/>
+                                <rect key="frame" x="20" y="438" width="374" height="370"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aVw-P9-InS">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="110.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="88.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qkj-8Y-WSx">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="31.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yq-RR-qOR">
-                                                        <rect key="frame" x="0.0" y="5.5" width="34.5" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="2" width="34.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="제목을 입력하세요" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xWm-xk-Np0">
-                                                        <rect key="frame" x="42.5" y="6.5" width="331.5" height="18.5"/>
+                                                        <rect key="frame" x="42.5" y="3" width="331.5" height="18.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jO7-D7-cqu">
-                                                <rect key="frame" x="0.0" y="39.5" width="374" height="31.5"/>
+                                                <rect key="frame" x="0.0" y="32" width="374" height="24.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCn-zq-BUB">
-                                                        <rect key="frame" x="0.0" y="5.5" width="37" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="2" width="37" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBs-I0-Xc6">
-                                                        <rect key="frame" x="45" y="1.5" width="329" height="29"/>
+                                                        <rect key="frame" x="45" y="0.0" width="329" height="24.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <state key="normal" title="날짜를 선택하세요">
                                                             <color key="titleColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -134,16 +134,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7BA-8a-xXz">
-                                                <rect key="frame" x="0.0" y="79" width="374" height="31.5"/>
+                                                <rect key="frame" x="0.0" y="64.5" width="374" height="24"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7E8-3H-VJb">
-                                                        <rect key="frame" x="0.0" y="5.5" width="72.5" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="1.5" width="72.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KcX-K5-Bba">
-                                                        <rect key="frame" x="80.5" y="1.5" width="293.5" height="29"/>
+                                                        <rect key="frame" x="80.5" y="0.0" width="293.5" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <state key="normal" title="카테고리를 선택하세요">
                                                             <color key="titleColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -157,7 +157,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="r12-KI-s8O">
-                                        <rect key="frame" x="0.0" y="126.5" width="374" height="265.5"/>
+                                        <rect key="frame" x="0.0" y="104.5" width="374" height="265.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ad4-h8-OQ0">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -195,6 +195,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Os9-L0-5FC"/>
                     </view>
+                    <navigationItem key="navigationItem" id="bfo-gw-CxA"/>
                     <connections>
                         <outlet property="catecoryField" destination="KcX-K5-Bba" id="yG4-gx-kno"/>
                         <outlet property="dateField" destination="LBs-I0-Xc6" id="Xlr-NQ-SCJ"/>
@@ -426,7 +427,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="EMG-5g-Zjs">
                             <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
-                                <segue destination="qCX-V4-4a9" kind="presentation" modalPresentationStyle="fullScreen" id="4DT-eo-IW2"/>
+                                <segue destination="qCX-V4-4a9" kind="presentation" id="4DT-eo-IW2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -466,7 +467,7 @@
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQL-Qp-KLb">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
-                                    <navigationItem id="NaI-re-sP5">
+                                    <navigationItem title="웹 검색" id="NaI-re-sP5">
                                         <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="Rg8-kh-Qum">
                                             <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <connections>

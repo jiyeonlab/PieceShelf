@@ -81,7 +81,7 @@ class AddViewController: UIViewController {
             // WebSearchVC에서 선택한 썸네일 데이터를 받기 위해, 추가
             webSearchVC.sendThumbnailDelegate = self
             
-            webSearchVC.modalPresentationStyle = .fullScreen
+//            webSearchVC.modalPresentationStyle = .fullScreen
             self.present(webSearchVC, animated: true)
         }
         let albumSearch = UIAlertAction(title: "앨범에서 가져오기", style: .default) { _ in
