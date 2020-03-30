@@ -30,6 +30,8 @@ class DetailViewController: UIViewController {
         guard let title = catecoryTitle else { return }
         navigationItem.title = title
         
+        // 현재 카테고리에 해당하는 db를 계속 observing
+        observeInCatecory()
     }
     
 
@@ -50,6 +52,25 @@ class DetailViewController: UIViewController {
             itemVC.data = itemsList?[index]
         }
 
+    }
+    
+    func observeInCatecory(){
+        guard let catecory = catecoryTitle else { return }
+        Database.database().reference().child("UserData").child(catecory).observe(.value) { snapshot in
+            
+            self.itemsList?.removeAll()
+            for child in snapshot.children {
+                let snap = child as! DataSnapshot
+                let key = snap.key
+                let value = snap.value as! [String:Any]
+
+                if key != "Default" {
+                    self.itemsList?.append(value)
+                }
+                
+                self.collectionView.reloadData()
+            }
+        }
     }
 }
 
