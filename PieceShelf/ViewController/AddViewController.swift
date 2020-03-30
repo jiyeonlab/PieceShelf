@@ -40,6 +40,9 @@ class AddViewController: UIViewController {
     // 썸네일의 상태
     var thumbnailState: ThumbnailState?
     
+    // 이미지 여부
+    var isFilledImg = false
+    
     lazy var datePickerView: UIDatePicker = {
         let picker = UIDatePicker()
         
@@ -70,11 +73,11 @@ class AddViewController: UIViewController {
         plusButtonHeight.constant = imageViewHeight.constant / 2
         // Firebase DB 참조
         ref = Database.database().reference()
-
+        
         // textfield 입력 시 키보드에 따른 view 위치 조정을 위해.
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-
+        
     }
     
     @IBAction func tappedBack(_ sender: Any) {
@@ -92,7 +95,7 @@ class AddViewController: UIViewController {
             // WebSearchVC에서 선택한 썸네일 데이터를 받기 위해, 추가
             webSearchVC.sendThumbnailDelegate = self
             
-//            webSearchVC.modalPresentationStyle = .fullScreen
+            //            webSearchVC.modalPresentationStyle = .fullScreen
             self.present(webSearchVC, animated: true)
         }
         let albumSearch = UIAlertAction(title: "앨범에서 가져오기", style: .default) { _ in
@@ -124,7 +127,7 @@ class AddViewController: UIViewController {
             let date = self.datePickerView.date
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy년 MM월 dd일"
-
+            
             self.dateField.setTitleColor(.darkGray, for: .normal)
             self.dateField.setTitle(dateFormatter.string(from: date), for: .normal)
             
@@ -150,7 +153,7 @@ class AddViewController: UIViewController {
             self?.catecoryField.setTitleColor(.darkText, for: .normal)
             self?.catecoryField.setTitle(Catecory.shared.catecoryList[self?.selectedCatecoryIndex ?? 0], for: .normal)
             self?.disableField()
-
+            
         }))
         
         actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
@@ -161,8 +164,7 @@ class AddViewController: UIViewController {
     // Save 버튼을 눌러, 입력한 정보들을 저장하고자 함.
     @IBAction func tappedSave(_ sender: Any) {
         
-        guard imageView.image != nil, let title = titleField.text, let date = dateField.titleLabel?.text, let catecory = catecoryField.titleLabel?.text else {
-            // TODO : 제목, 날짜, 카테고리 중 하나라도 비어있으면, 경고창 띄워야 함.
+        guard isFilledImg, titleField.text?.lengthOfBytes(using: .utf8) != 0, dateField.titleLabel?.text != "날짜를 선택하세요", catecoryField.titleLabel?.text != "카테고리를 선택하세요" else {
             let alert = UIAlertController(title: "이미지, 제목, 날짜, 카테고리는 \r\n 필수 항목입니다!", message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
             
@@ -170,17 +172,20 @@ class AddViewController: UIViewController {
             return
         }
         
+        guard imageView.image != nil, let title = titleField.text, let date = dateField.titleLabel?.text, let catecory = catecoryField.titleLabel?.text else {//
+            return
+        }
+        
         switch thumbnailState {
         case .web:
             guard let thumbnailInfo = thumbnail else {
                 
-                // TODO : 하나라도 비어있을 경우, 경고창 띄워줘야함.
                 return
             }
 //            let newData = UserData(thumbnail: thumbnailInfo, date: date, memo: memoField.text)
             
             let newData = UserData(title: title, thumbnail: thumbnailInfo, date: date, memo: memoField.text)
-
+            
             ref.child("UserData").child(catecory).child(title).setValue(newData.toDictionary)
             
         case .photo:
@@ -264,7 +269,7 @@ extension AddViewController: UITextFieldDelegate {
 }
 
 extension AddViewController: UITextViewDelegate {
-  
+    
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         isMemo = true
         
@@ -302,6 +307,7 @@ extension AddViewController: UIImagePickerControllerDelegate & UINavigationContr
         }
         
         imageAddButton.isHidden = true
+        isFilledImg = true
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -331,6 +337,7 @@ extension AddViewController: SendThumbnailDelegate {
             DispatchQueue.main.async {
                 self.imageView.image = UIImage(data: thumbnail)
                 self.imageAddButton.isHidden = true
+                self.isFilledImg = true
             }
         }
     }
