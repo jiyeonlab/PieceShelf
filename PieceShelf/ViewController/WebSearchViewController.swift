@@ -20,6 +20,9 @@ class WebSearchViewController: UIViewController {
     // SendThumbnailDelegate 변수
     var sendThumbnailDelegate: SendThumbnailDelegate?
     
+    // 한 줄에 collection cell을 몇 개 넣을건지
+    let itemsPerRows: CGFloat = 3.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,7 +55,7 @@ extension WebSearchViewController: UISearchBarDelegate {
         print("검색할 키워드 = \(keyword)")
 
         // 키워드를 utf-8로 인코딩하여 요청하기 위해 필요한 과정.
-        let urlString = "https://openapi.naver.com/v1/search/image?query=" + "\(keyword)" + "&display=50&start=1&sort=sim"
+        let urlString = "https://openapi.naver.com/v1/search/image?query=" + "\(keyword)" + "&display=100&start=1&sort=sim"
         guard let encodingString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return
         }
@@ -76,7 +79,8 @@ extension WebSearchViewController: UISearchBarDelegate {
                     self.thumbnail.removeAll()
                     
                     result.items.forEach { index in
-                        self.thumbnail.append(index.thumbnail ?? "")
+//                        self.thumbnail.append(index.thumbnail ?? "")
+                        self.thumbnail.append(index.link ?? "")
                     }
                     self.collectionView.reloadData()
                 }catch let error{
@@ -116,14 +120,17 @@ extension WebSearchViewController: UICollectionViewDataSource {
             }
             
             DispatchQueue.main.async {
-                if let index = collectionView.indexPath(for: thumbnailCell) {
-                    if index.item == indexPath.item {
-                        thumbnailCell.imageView.image = UIImage(data: thumbnail)
-                    }
-                }
+//                if let index = collectionView.indexPath(for: thumbnailCell) {
+//                    if index.item == indexPath.item {
+//                        thumbnailCell.imageView.image = UIImage(data: thumbnail)
+//                    }
+//                }
+                thumbnailCell.imageView.image = UIImage(data: thumbnail)
+
             }
         }
-        return cell
+        
+        return thumbnailCell
     }
     
     
@@ -141,6 +148,34 @@ extension WebSearchViewController: UICollectionViewDelegate {
         dismiss(animated: true, completion: nil)
     }
 }
+
+// UICollectionViewFlowLayout
+extension WebSearchViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        print("Flow Layout")
+//        let width = view.frame.width
+        let width = collectionView.bounds.width
+        let widthPerItems = width / itemsPerRows
+
+        let height = widthPerItems * 1.4
+
+        return CGSize(width: widthPerItems, height: height)
+    }
+    }
 
 // WebSearchVC에서 선택한 썸네일을 AddVC에 띄워주기 위해 선언한 Delegate 프로토콜
 protocol SendThumbnailDelegate {

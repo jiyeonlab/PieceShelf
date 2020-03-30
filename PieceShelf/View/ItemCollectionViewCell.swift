@@ -58,7 +58,6 @@ class ItemCollectionViewCell: UICollectionViewCell {
                 
                 DispatchQueue.main.async {
                     self.imageView.image = UIImage(data: thumbnail)
-                    self.imageView.contentMode = .scaleAspectFit
                 }
             }
         }

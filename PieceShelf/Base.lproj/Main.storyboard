@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -72,7 +71,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FmG-t5-EWn">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FmG-t5-EWn">
                                 <rect key="frame" x="0.0" y="88" width="414" height="367"/>
                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -329,9 +328,8 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CRK-Bi-eey">
                                 <rect key="frame" x="0.0" y="144" width="414" height="718"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="z9a-3I-Kla">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="z9a-3I-Kla">
                                     <size key="itemSize" width="150" height="150"/>
-                                    <size key="estimatedItemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -340,21 +338,22 @@
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ThumbnailCollectionViewCell" id="HFo-VI-2Xh" customClass="ThumbnailCollectionViewCell" customModule="PieceShelf" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="vtl-QK-tuz">
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hsC-5t-CCn">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hsC-5t-CCn">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                                 </imageView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="hsC-5t-CCn" firstAttribute="leading" secondItem="vtl-QK-tuz" secondAttribute="leading" id="ZeU-z2-5qH"/>
-                                                <constraint firstItem="hsC-5t-CCn" firstAttribute="top" secondItem="vtl-QK-tuz" secondAttribute="top" id="kkC-jk-i3q"/>
-                                                <constraint firstAttribute="trailing" secondItem="hsC-5t-CCn" secondAttribute="trailing" id="t2B-Aw-5HA"/>
-                                                <constraint firstAttribute="bottom" secondItem="hsC-5t-CCn" secondAttribute="bottom" id="tGi-Y2-bGi"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="hsC-5t-CCn" firstAttribute="leading" secondItem="HFo-VI-2Xh" secondAttribute="leading" id="ZeU-z2-5qH"/>
+                                            <constraint firstItem="hsC-5t-CCn" firstAttribute="top" secondItem="HFo-VI-2Xh" secondAttribute="top" id="kkC-jk-i3q"/>
+                                            <constraint firstAttribute="trailing" secondItem="hsC-5t-CCn" secondAttribute="trailing" id="t2B-Aw-5HA"/>
+                                            <constraint firstAttribute="bottom" secondItem="hsC-5t-CCn" secondAttribute="bottom" id="tGi-Y2-bGi"/>
+                                        </constraints>
+                                        <size key="customSize" width="150" height="150"/>
                                         <connections>
                                             <outlet property="imageView" destination="hsC-5t-CCn" id="hwe-hk-2c3"/>
                                         </connections>
