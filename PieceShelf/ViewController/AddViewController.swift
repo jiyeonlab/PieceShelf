@@ -49,6 +49,10 @@ class AddViewController: UIViewController {
         return picker
     }()
     
+    // titlefield, memofield 중 어디인지
+    var isTitle = false
+    var isMemo = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,11 +62,18 @@ class AddViewController: UIViewController {
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         
+        titleField.delegate = self
+        memoField.delegate = self
+        
         // imageView Height 조정
         imageViewHeight.constant = view.frame.height / Constant.imageViewHeightRatio
         plusButtonHeight.constant = imageViewHeight.constant / 2
         // Firebase DB 참조
         ref = Database.database().reference()
+
+        // textfield 입력 시 키보드에 따른 view 위치 조정을 위해.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
 
     }
     
@@ -114,7 +125,10 @@ class AddViewController: UIViewController {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy년 MM월 dd일"
 
+            self.dateField.setTitleColor(.darkGray, for: .normal)
             self.dateField.setTitle(dateFormatter.string(from: date), for: .normal)
+            
+            self.disableField()
         }))
         actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel))
         
@@ -132,9 +146,14 @@ class AddViewController: UIViewController {
         catecoryPicker.preferredContentSize.height = Constant.catecoryPickerHeight
         actionSheet.setValue(catecoryPicker, forKey: "contentViewController")
         
-        actionSheet.addAction(UIAlertAction(title: "완료", style: .default, handler: { [weak self] action in
-            self?.catecoryField.titleLabel?.text = Catecory.shared.catecoryList[self?.selectedCatecoryIndex ?? 0]
+        actionSheet.addAction(UIAlertAction(title: "저장", style: .default, handler: { [weak self] action in
+            self?.catecoryField.setTitleColor(.darkText, for: .normal)
+            self?.catecoryField.setTitle(Catecory.shared.catecoryList[self?.selectedCatecoryIndex ?? 0], for: .normal)
+            self?.disableField()
+
         }))
+        
+        actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
         
         present(actionSheet, animated: true)
     }
@@ -187,6 +206,65 @@ class AddViewController: UIViewController {
         }
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    // 화면의 다른 곳을 선택하면, 키보드 내려가도록. (ViewController의 메소드)
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        disableField()
+    }
+    
+    func disableField() {
+        titleField.resignFirstResponder()
+        memoField.resignFirstResponder()
+        isTitle = false
+        isMemo = false
+    }
+    
+    // 키보드가 올라오면 받는 노티피케이션으로부터 호출됨.
+    @objc func keyboardWillShow(_ noti: Notification){
+        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            print("title \(isTitle) memo \(isMemo)")
+            if isTitle {
+                self.view.frame.origin.y = -10
+            }else if isMemo {
+                self.view.frame.origin.y = -keyboardHeight
+            }
+        }else{
+            return
+        }
+    }
+    
+    @objc func keyboardWillHide(_ noti: Notification){
+        self.view.frame.origin.y = 0
+    }
+    
+}
+
+// Textfield delegate
+extension AddViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("제목 수정 시작")
+        isTitle = true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        isTitle = false
+        
+        return true
+    }
+}
+
+extension AddViewController: UITextViewDelegate {
+  
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        isMemo = true
+        
+        return true
     }
 }
 

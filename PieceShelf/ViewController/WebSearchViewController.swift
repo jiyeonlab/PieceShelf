@@ -49,6 +49,9 @@ extension WebSearchViewController: UISearchBarDelegate {
     // 키보드에서 search 버튼을 눌렀을 경우.
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
+        // search 버튼을 누르면, 키보드를 내리기
+        searchBar.resignFirstResponder()
+        
         guard let keyword = searchBar.text else {
             return
         }
