@@ -91,6 +91,20 @@ class ItemViewController: UIViewController {
     
     // DB에 해당 아이템 삭제하기
     @IBAction func deleteItem(_ sender: Any) {
+        guard let catecoryName = catecory else { return }
+        guard let title = titleLabel.text else { return }
+        
+        let alert = UIAlertController(title: "항목 삭제", message: "정말 삭제하시겠습니까?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "취소", style: .default, handler: nil))
+       
+        alert.addAction(UIAlertAction(title: "삭제", style: .default, handler: { _ in
+            let deleteRef = Database.database().reference().child("UserData").child(catecoryName)
+            deleteRef.child(title).removeValue()
+            
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
+        present(alert, animated: true)
     }
     
 }
