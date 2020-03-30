@@ -27,6 +27,10 @@ class ItemCollectionViewCell: UICollectionViewCell {
         imageView.clipsToBounds = true
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
