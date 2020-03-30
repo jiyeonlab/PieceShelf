@@ -23,6 +23,8 @@ class ItemCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        imageView.layer.cornerRadius = 2
+        imageView.clipsToBounds = true
     }
 
     
@@ -33,6 +35,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
         guard let thumbnailString = data?["Thumbnail"] as? String else { return }
         
         title.text = itemTitle
+//        title.adjustsFontSizeToFitWidth = true
         
         // thumbnail의 경우, storage에 저장된 경우를 걸러야 함.
         if thumbnailString.hasPrefix("Photo_"){
