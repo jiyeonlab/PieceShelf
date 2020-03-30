@@ -31,7 +31,26 @@ class DetailViewController: UIViewController {
         navigationItem.title = title
         
     }
+    
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ShowSelectedItem" {
+            print("!!!!")
+            guard let itemVC = segue.destination as? ItemViewController else {
+                return
+            }
+            
+            itemVC.catecory = catecoryTitle
+            
+            guard let index = sender as? Int else {
+                return
+            }
+            
+            itemVC.data = itemsList?[index]
+        }
+
+    }
 }
 
 extension DetailViewController: UICollectionViewDataSource {
@@ -76,6 +95,14 @@ extension DetailViewController: UICollectionViewDataSource {
         }
         
         return cell
+    }
+}
+
+extension DetailViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        performSegue(withIdentifier: "ShowSelectedItem", sender: indexPath.item)
     }
 }
 
