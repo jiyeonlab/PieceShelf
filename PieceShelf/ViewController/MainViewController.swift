@@ -17,8 +17,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
+        navigationController?.navigationBar.prefersLargeTitles = true        
         tableView.dataSource = self
         
         // MainSectionTableViewCell의 xib를 등록.
@@ -65,12 +64,13 @@ extension MainViewController: UITableViewDataSource {
 // UITableViewCell의 xib에서 버튼을 누르면, DetailVC를 열게 하려고 채택.
 extension MainViewController: PresentDelegate {
     
-    func loadNewVC(by catecory: String) {
+    func loadNewVC(by catecory: String, with data: [[String:Any]]) {
         guard let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailVC") as? DetailViewController else {
             return
         }
         
         detailVC.catecoryTitle = catecory
+        detailVC.itemsList = data
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

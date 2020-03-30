@@ -49,6 +49,7 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                 </subviews>
+                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="W2o-MC-Eop" secondAttribute="bottom" id="4vA-ch-Vn5"/>
                     <constraint firstAttribute="trailing" secondItem="cRw-IB-Daa" secondAttribute="trailing" constant="20" id="8JV-KB-M0N"/>

@@ -42,7 +42,9 @@ class MainSectionTableViewCell: UITableViewCell {
     @IBAction func showDetailVC(_ sender: Any) {
 
         guard let catecory = catecoryName.text else { return }
-        presentDelegate?.loadNewVC(by: catecory)
+        
+        // 전체보기 버튼을 누르면, 카테고리 이름과 그 카테고리 안에 있는 데이터를 함께 보내줌.
+        presentDelegate?.loadNewVC(by: catecory, with: items)
     }
     
     // 해당하는 카테고리의 데이터를 불러옴
@@ -95,5 +97,5 @@ extension MainSectionTableViewCell: UICollectionViewDataSource {
 
 // detailVC를 열기 위한 Delegate
 protocol PresentDelegate {
-    func loadNewVC(by catecory: String)
+    func loadNewVC(by catecory: String, with data: [[String: Any]])
 }

@@ -13,6 +13,8 @@ struct Constant {
     static let datePickerHeight: CGFloat = 200.0
     static let catecoryPickerHeight: CGFloat = 150.0
     static let pickerRowHeight: CGFloat = 40.0
+    static let cellSpacing: CGFloat = 2
+    static let itemsRatio: CGFloat = 1.5
 }
 
 // AddVC에서 저장할 이미지가 웹에서 가져온 것인지 카메라롤에서 가져온 것인지 구분

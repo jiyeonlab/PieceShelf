@@ -171,11 +171,11 @@ extension WebSearchViewController: UICollectionViewDelegateFlowLayout {
         let width = collectionView.bounds.width
         let widthPerItems = width / itemsPerRows
 
-        let height = widthPerItems * 1.4
+        let height = widthPerItems * Constant.itemsRatio
 
         return CGSize(width: widthPerItems, height: height)
     }
-    }
+}
 
 // WebSearchVC에서 선택한 썸네일을 AddVC에 띄워주기 위해 선언한 Delegate 프로토콜
 protocol SendThumbnailDelegate {
