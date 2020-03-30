@@ -163,6 +163,10 @@ class AddViewController: UIViewController {
         
         guard imageView.image != nil, let title = titleField.text, let date = dateField.titleLabel?.text, let catecory = catecoryField.titleLabel?.text else {
             // TODO : 제목, 날짜, 카테고리 중 하나라도 비어있으면, 경고창 띄워야 함.
+            let alert = UIAlertController(title: "이미지, 제목, 날짜, 카테고리는 \r\n 필수 항목입니다!", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+            
+            present(alert, animated: true)
             return
         }
         
