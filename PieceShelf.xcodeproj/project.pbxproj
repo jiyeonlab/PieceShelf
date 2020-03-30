@@ -33,6 +33,7 @@
 		9074582F2430F7C500E2928C /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9074582D2430F7C500E2928C /* ItemCollectionViewCell.swift */; };
 		907458302430F7C500E2928C /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9074582E2430F7C500E2928C /* ItemCollectionViewCell.xib */; };
 		90798A942430EC5B005FFA27 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90798A932430EC5B005FFA27 /* DetailViewController.swift */; };
+		90F7FAE62431EE6300672FB8 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F7FAE52431EE6300672FB8 /* ItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		9074582D2430F7C500E2928C /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		9074582E2430F7C500E2928C /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		90798A932430EC5B005FFA27 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		90F7FAE52431EE6300672FB8 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		D57CDD3C168E4537A91F1435 /* Pods-PieceShelfTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PieceShelfTests.debug.xcconfig"; path = "Target Support Files/Pods-PieceShelfTests/Pods-PieceShelfTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,6 +184,7 @@
 		90798A962430F49D005FFA27 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				90F7FAE52431EE6300672FB8 /* ItemViewController.swift */,
 				90798A932430EC5B005FFA27 /* DetailViewController.swift */,
 				9054ED8E242F164800D28C20 /* MainViewController.swift */,
 				9054ED90242F166100D28C20 /* AddViewController.swift */,
@@ -195,9 +198,9 @@
 			isa = PBXGroup;
 			children = (
 				9054EDB92430E74100D28C20 /* MainSectionTableViewCell.swift */,
+				9054EDBA2430E74100D28C20 /* MainSectionTableViewCell.xib */,
 				9074582D2430F7C500E2928C /* ItemCollectionViewCell.swift */,
 				9074582E2430F7C500E2928C /* ItemCollectionViewCell.xib */,
-				9054EDBA2430E74100D28C20 /* MainSectionTableViewCell.xib */,
 				9054ED99242F310100D28C20 /* ThumbnailCollectionViewCell.swift */,
 				9054EDAB24308FD700D28C20 /* CatecoryTableViewCell.swift */,
 				9044D15D2431D95B00926FC0 /* DetailCollectionViewCell.swift */,
@@ -402,6 +405,7 @@
 				9074582F2430F7C500E2928C /* ItemCollectionViewCell.swift in Sources */,
 				9054ED96242F282B00D28C20 /* APIKey.swift in Sources */,
 				9054ED6F242F14ED00D28C20 /* SceneDelegate.swift in Sources */,
+				90F7FAE62431EE6300672FB8 /* ItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

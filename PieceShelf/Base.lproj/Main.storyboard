@@ -42,6 +42,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Hfd-rT-Tu1" id="28G-Ha-FpK"/>
+                        <segue destination="QHw-bL-VsL" kind="presentation" identifier="ItemVC" modalPresentationStyle="fullScreen" id="Tpp-jc-pTh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -258,6 +259,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9oz-RK-u3l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1928.985507246377" y="917.41071428571422"/>
+        </scene>
+        <!--Item View Controller-->
+        <scene sceneID="EPt-8Z-2ix">
+            <objects>
+                <viewController storyboardIdentifier="ItemVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QHw-bL-VsL" customClass="ItemViewController" customModule="PieceShelf" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CeE-GR-nRJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="irH-lJ-YXk">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="524"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="524" id="hUc-bh-WQM"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="irH-lJ-YXk" firstAttribute="top" secondItem="CeE-GR-nRJ" secondAttribute="top" id="Wmi-oX-cgg"/>
+                            <constraint firstItem="irH-lJ-YXk" firstAttribute="leading" secondItem="L3L-Vu-oN6" secondAttribute="leading" id="x1f-7J-asj"/>
+                            <constraint firstItem="irH-lJ-YXk" firstAttribute="trailing" secondItem="L3L-Vu-oN6" secondAttribute="trailing" id="x9k-i9-KyL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="L3L-Vu-oN6"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="irH-lJ-YXk" id="uyh-yp-Fuw"/>
+                        <outlet property="imageViewHeight" destination="hUc-bh-WQM" id="5tA-UL-B1G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YTj-l6-eYt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3420.289855072464" y="667.63392857142856"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="UME-yv-t6S">
@@ -495,7 +528,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4DT-eo-IW2"/>
+        <segue reference="WXW-On-hN9"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.left" catalog="system" width="96" height="128"/>

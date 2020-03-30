@@ -73,4 +73,16 @@ extension MainViewController: PresentDelegate {
         detailVC.itemsList = data
         navigationController?.pushViewController(detailVC, animated: true)
     }
+    
+    func openItemVC(by catecory: String, with data: [String : Any]) {
+//        performSegue(withIdentifier: "ItemVC", sender: data)
+        
+        guard let itemVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ItemVC") as? ItemViewController else {
+            return
+        }
+        
+        itemVC.catecory = catecory
+        itemVC.data = data
+        present(itemVC, animated: true)
+    }
 }

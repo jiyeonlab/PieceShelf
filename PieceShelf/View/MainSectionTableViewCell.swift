@@ -28,6 +28,7 @@ class MainSectionTableViewCell: UITableViewCell {
         // Initialization code
         
         collectionView.dataSource = self
+        collectionView.delegate = self
         
         let nibName = UINib(nibName: "ItemCollectionViewCell", bundle: nil)
         collectionView.register(nibName, forCellWithReuseIdentifier: ItemCollectionViewCell.identifier)
@@ -95,7 +96,21 @@ extension MainSectionTableViewCell: UICollectionViewDataSource {
     
 }
 
+extension MainSectionTableViewCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("현재 카테고리 \(catecoryName.text!)")
+        print("____________________________ \(items[indexPath.item])")
+        
+        guard let catecory = catecoryName.text else { return }
+        presentDelegate?.openItemVC(by: catecory, with: items[indexPath.item])
+        
+    }
+}
+
 // detailVC를 열기 위한 Delegate
 protocol PresentDelegate {
     func loadNewVC(by catecory: String, with data: [[String: Any]])
+    
+    // collection cell이 눌리면, itemVC를 열기 위해 추가.
+    func openItemVC(by catecory: String, with data: [String:Any])
 }
