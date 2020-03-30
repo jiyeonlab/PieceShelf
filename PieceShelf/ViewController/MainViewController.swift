@@ -83,7 +83,7 @@ extension MainViewController: PresentDelegate {
         
         itemVC.catecory = catecory
         itemVC.data = data
-        itemVC.modalPresentationStyle = .fullScreen
+//        itemVC.modalPresentationStyle = .fullScreen
         present(itemVC, animated: true)
     }
 }

@@ -16,6 +16,8 @@ class AddViewController: UIViewController {
     lazy var imagePicker = UIImagePickerController()
     @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var plusButtonHeight: NSLayoutConstraint!
+    @IBOutlet weak var imageAddButton: UILabel!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var dateField: UIButton!
     @IBOutlet weak var catecoryField: UIButton!
@@ -58,7 +60,7 @@ class AddViewController: UIViewController {
         
         // imageView Height 조정
         imageViewHeight.constant = view.frame.height / Constant.imageViewHeightRatio
-        
+        plusButtonHeight.constant = imageViewHeight.constant / 2
         // Firebase DB 참조
         ref = Database.database().reference()
 
@@ -217,6 +219,7 @@ extension AddViewController: UIImagePickerControllerDelegate & UINavigationContr
             thumbnailState = .photo
         }
         
+        imageAddButton.isHidden = true
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -245,6 +248,7 @@ extension AddViewController: SendThumbnailDelegate {
             
             DispatchQueue.main.async {
                 self.imageView.image = UIImage(data: thumbnail)
+                self.imageAddButton.isHidden = true
             }
         }
     }

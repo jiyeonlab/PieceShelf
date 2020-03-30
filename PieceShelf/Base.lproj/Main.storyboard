@@ -35,6 +35,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="PIECE" largeTitleDisplayMode="always" id="6oM-Nz-7XX">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="W2q-CD-ErQ">
+                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <segue destination="qCX-V4-4a9" kind="presentation" modalPresentationStyle="fullScreen" id="WXW-On-hN9"/>
                             </connections>
@@ -62,11 +63,13 @@
                                 <items>
                                     <navigationItem title="Add" id="HkX-tJ-1jd">
                                         <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="a65-LW-oEm">
+                                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <connections>
                                                 <action selector="tappedBack:" destination="qCX-V4-4a9" id="dKP-Xi-lIs"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="cJa-kj-FQy">
+                                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <connections>
                                                 <action selector="tappedSave:" destination="qCX-V4-4a9" id="4Es-nm-34t"/>
                                             </connections>
@@ -81,9 +84,8 @@
                                     <constraint firstAttribute="height" constant="367" id="KA3-uH-NiS"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="+" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dK5-Rw-Ipx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dK5-Rw-Ipx">
                                 <rect key="frame" x="197.5" y="253" width="19" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -165,7 +167,7 @@
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DQ3-Lu-rjq">
                                                 <rect key="frame" x="0.0" y="28.5" width="374" height="237"/>
-                                                <color key="backgroundColor" red="0.97713008752090535" green="0.97240965231549037" blue="0.98185052272632034" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -179,6 +181,7 @@
                         <constraints>
                             <constraint firstItem="U6j-OJ-E0t" firstAttribute="trailing" secondItem="Os9-L0-5FC" secondAttribute="trailing" id="1fi-6F-cmO"/>
                             <constraint firstItem="FmG-t5-EWn" firstAttribute="trailing" secondItem="Os9-L0-5FC" secondAttribute="trailing" id="4I7-GJ-VSx"/>
+                            <constraint firstItem="dK5-Rw-Ipx" firstAttribute="top" secondItem="U6j-OJ-E0t" secondAttribute="bottom" constant="165" id="4lE-TH-3gn"/>
                             <constraint firstItem="Xis-zg-7tB" firstAttribute="leading" secondItem="Os9-L0-5FC" secondAttribute="leading" constant="20" id="64i-eN-YlO"/>
                             <constraint firstItem="FmG-t5-EWn" firstAttribute="leading" secondItem="Os9-L0-5FC" secondAttribute="leading" id="7iU-IW-Tne"/>
                             <constraint firstItem="Xis-zg-7tB" firstAttribute="top" secondItem="FmG-t5-EWn" secondAttribute="bottom" constant="15" id="FB2-qW-EgD"/>
@@ -186,6 +189,7 @@
                             <constraint firstItem="U6j-OJ-E0t" firstAttribute="leading" secondItem="Os9-L0-5FC" secondAttribute="leading" id="OSN-fj-zoN"/>
                             <constraint firstItem="FmG-t5-EWn" firstAttribute="top" secondItem="U6j-OJ-E0t" secondAttribute="bottom" id="QLa-dz-pvP"/>
                             <constraint firstItem="Os9-L0-5FC" firstAttribute="trailing" secondItem="Xis-zg-7tB" secondAttribute="trailing" constant="20" id="d0j-13-lg0"/>
+                            <constraint firstItem="dK5-Rw-Ipx" firstAttribute="centerX" secondItem="hFd-kh-pjf" secondAttribute="centerX" id="nav-uP-MEu"/>
                             <constraint firstItem="Os9-L0-5FC" firstAttribute="bottom" secondItem="Xis-zg-7tB" secondAttribute="bottom" id="nhc-xR-h9F"/>
                             <constraint firstItem="U6j-OJ-E0t" firstAttribute="top" secondItem="Os9-L0-5FC" secondAttribute="top" id="ufk-k0-Bsw"/>
                         </constraints>
@@ -194,9 +198,11 @@
                     <connections>
                         <outlet property="catecoryField" destination="KcX-K5-Bba" id="yG4-gx-kno"/>
                         <outlet property="dateField" destination="LBs-I0-Xc6" id="Xlr-NQ-SCJ"/>
+                        <outlet property="imageAddButton" destination="dK5-Rw-Ipx" id="z4Z-Cf-UVr"/>
                         <outlet property="imageView" destination="FmG-t5-EWn" id="jyb-lC-dug"/>
                         <outlet property="imageViewHeight" destination="KA3-uH-NiS" id="BgP-Ef-P89"/>
                         <outlet property="memoField" destination="DQ3-Lu-rjq" id="MhM-gr-7nl"/>
+                        <outlet property="plusButtonHeight" destination="4lE-TH-3gn" id="n77-1G-0Ef"/>
                         <outlet property="titleField" destination="xWm-xk-Np0" id="OGu-WG-cVF"/>
                     </connections>
                 </viewController>
@@ -240,11 +246,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="설정" id="x7X-Rs-iol">
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="gJk-AI-iHg">
+                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <action selector="addCatecory:" destination="xCH-wC-j2w" id="91e-ZT-NNE"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="편집" id="dsu-hY-Q5S">
+                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <action selector="editCatecory:" destination="xCH-wC-j2w" id="Orb-t4-gpy"/>
                             </connections>
@@ -279,13 +287,13 @@
                                 <items>
                                     <navigationItem id="J3r-RJ-wxe">
                                         <barButtonItem key="leftBarButtonItem" title="Item" image="multiply" catalog="system" id="Rjn-T0-qKF">
-                                            <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <connections>
                                                 <action selector="closeButton:" destination="QHw-bL-VsL" id="4vD-fC-zQ2"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="3UU-kl-cA1">
-                                            <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <connections>
                                                 <action selector="deleteItem:" destination="QHw-bL-VsL" id="Y7v-3i-aQt"/>
                                             </connections>
@@ -322,22 +330,22 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKL-VK-Ycl">
-                                <rect key="frame" x="8" y="569" width="398" height="313"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="18" y="569" width="388" height="313"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Svw-MY-9Mb" firstAttribute="trailing" secondItem="L3L-Vu-oN6" secondAttribute="trailing" id="6kC-1C-Cnz"/>
                             <constraint firstItem="nKL-VK-Ycl" firstAttribute="top" secondItem="Svw-MY-9Mb" secondAttribute="bottom" constant="10" id="8UF-Ta-Wwb"/>
                             <constraint firstItem="ewy-vA-8RG" firstAttribute="leading" secondItem="L3L-Vu-oN6" secondAttribute="leading" id="8Wu-we-IEJ"/>
                             <constraint firstItem="ewy-vA-8RG" firstAttribute="top" secondItem="L3L-Vu-oN6" secondAttribute="top" id="I9d-6e-4KX"/>
                             <constraint firstItem="Svw-MY-9Mb" firstAttribute="leading" secondItem="L3L-Vu-oN6" secondAttribute="leading" id="NdX-Eh-TvY"/>
-                            <constraint firstItem="nKL-VK-Ycl" firstAttribute="leading" secondItem="L3L-Vu-oN6" secondAttribute="leading" constant="8" id="Rjg-XW-sAw"/>
+                            <constraint firstItem="nKL-VK-Ycl" firstAttribute="leading" secondItem="L3L-Vu-oN6" secondAttribute="leading" constant="18" id="Rjg-XW-sAw"/>
                             <constraint firstItem="nKL-VK-Ycl" firstAttribute="trailing" secondItem="L3L-Vu-oN6" secondAttribute="trailing" constant="-8" id="WgD-Yn-gc7"/>
                             <constraint firstItem="irH-lJ-YXk" firstAttribute="top" secondItem="CeE-GR-nRJ" secondAttribute="top" id="Wmi-oX-cgg"/>
                             <constraint firstItem="nKL-VK-Ycl" firstAttribute="bottom" secondItem="L3L-Vu-oN6" secondAttribute="bottom" constant="20" id="ekD-Wn-gBe"/>
@@ -416,6 +424,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="FWM-d7-OHd">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="EMG-5g-Zjs">
+                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <segue destination="qCX-V4-4a9" kind="presentation" modalPresentationStyle="fullScreen" id="4DT-eo-IW2"/>
                             </connections>
@@ -459,6 +468,7 @@
                                 <items>
                                     <navigationItem id="NaI-re-sP5">
                                         <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="Rg8-kh-Qum">
+                                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <connections>
                                                 <action selector="tappedBackButton:" destination="kk1-D5-ggT" id="Ug8-86-wjB"/>
                                             </connections>
@@ -531,11 +541,11 @@
             </objects>
             <point key="canvasLocation" x="5862" y="359"/>
         </scene>
-        <!--PIECE-->
+        <!--Yours-->
         <scene sceneID="qqy-WL-33K">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6U7-EN-8vh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="PIECE" id="iyj-Qc-2J4"/>
+                    <tabBarItem key="tabBarItem" title="Yours" image="heart.fill" catalog="system" id="iyj-Qc-2J4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eWG-s2-j4R">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -558,11 +568,11 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
-        <!--설정-->
+        <!--Setting-->
         <scene sceneID="O6P-Qg-3GX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7qd-ob-vhu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="설정" id="z4z-un-Nu6"/>
+                    <tabBarItem key="tabBarItem" title="Setting" image="person.fill" catalog="system" id="z4z-un-Nu6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XVg-GP-CVw">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -601,6 +611,8 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="multiply" catalog="system" width="128" height="111"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
     </resources>
 </document>
