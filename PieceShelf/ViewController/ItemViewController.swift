@@ -14,17 +14,43 @@ class ItemViewController: UIViewController {
     // MainVC로 부터 전달받은 해당 Item의 data 정보
     var data: [String:Any]?
     var catecory: String?
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var memoView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageViewHeight.constant = view.bounds.height / 1.8
+        imageViewHeight.constant = view.frame.height / 1.6
         
         fetchImg()
         
-        print("ITEM VIEW CONTROLLER")
+        navigationBar.shadowImage = UIImage()
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
+        configLabel()
+        configMemo()
+    }
+    
+    func configLabel(){
+        guard let title = data?.first(where: { $0.key == "Title" })?.value as? String else {
+            return
+        }
+        guard let date = data?.first(where: { $0.key == "Date" })?.value as? String else{
+            return
+        }
+        titleLabel.text = title
+        dateLabel.text = date
+    }
+    
+    func configMemo() {
+        guard let memo = data?.first(where: { $0.key == "Memo" })?.value as? String else{
+            return
+        }
+        memoView.text = memo
     }
     
     func fetchImg() {
@@ -58,4 +84,13 @@ class ItemViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func closeButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // DB에 해당 아이템 삭제하기
+    @IBAction func deleteItem(_ sender: Any) {
+    }
+    
 }
