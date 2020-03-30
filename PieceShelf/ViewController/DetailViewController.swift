@@ -95,8 +95,14 @@ extension DetailViewController: UICollectionViewDataSource {
                 if let error = error {
                     print("다운로드 에러 \(error)")
                 }else{
-                    let img = UIImage(data: data!)
-                    cell.imageView.image = img
+                    
+                    if let index = collectionView.indexPath(for: cell) {
+                        if index.item == indexPath.item {
+                            let img = UIImage(data: data!)
+                            cell.imageView.image = img
+                        }
+                    }
+                    
                 }
             }
         }else{
@@ -109,7 +115,11 @@ extension DetailViewController: UICollectionViewDataSource {
                 }
                 
                 DispatchQueue.main.async {
-                    cell.imageView.image = UIImage(data: data)
+                    if let index = collectionView.indexPath(for: cell){
+                        if index.item == indexPath.item {
+                            cell.imageView.image = UIImage(data: data)
+                        }
+                    }
                 }
             }
             
