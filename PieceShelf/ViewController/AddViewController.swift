@@ -150,7 +150,7 @@ class AddViewController: UIViewController {
         actionSheet.setValue(catecoryPicker, forKey: "contentViewController")
         
         actionSheet.addAction(UIAlertAction(title: "저장", style: .default, handler: { [weak self] action in
-            self?.catecoryField.setTitleColor(.darkText, for: .normal)
+            self?.catecoryField.setTitleColor(.darkGray, for: .normal)
             self?.catecoryField.setTitle(Catecory.shared.catecoryList[self?.selectedCatecoryIndex ?? 0], for: .normal)
             self?.disableField()
             
