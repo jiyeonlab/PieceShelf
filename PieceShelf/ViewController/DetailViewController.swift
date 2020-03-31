@@ -39,6 +39,11 @@ class DetailViewController: UIViewController {
         // 현재 카테고리에 해당하는 db를 계속 observing
         observeInCatecory()
 
+        guard let items = itemsList, items.count != 0 else {
+            activityIndicator.stopAnimating()
+            return
+        }
+        
         activityIndicator.startAnimating()
     }
     
