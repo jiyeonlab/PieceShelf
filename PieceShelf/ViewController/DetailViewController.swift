@@ -17,6 +17,12 @@ class DetailViewController: UIViewController {
     
     // 한 줄에 collection cell을 몇 개 넣을건지
     let itemsPerRows: CGFloat = 3.0
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    var storageCount = 0
+    var isStorageComplete = false
+    var isNormalComplete = false
+    @IBOutlet weak var indicatorBackView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +38,40 @@ class DetailViewController: UIViewController {
         
         // 현재 카테고리에 해당하는 db를 계속 observing
         observeInCatecory()
+
+        activityIndicator.startAnimating()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let items = itemsList, items.count != 0 else { return }
+        
+        for item in items {
+            if let value = item.first(where: { $0.key == "Thumbnail" })?.value as? String {
+                if value.hasPrefix("Photo_"){
+                    storageCount += 1
+                }
+            }
+          
+        }
 
+        print("스토리지 갯수 \(storageCount)")
+    }
+    
+    func configIndicator(){
+        if storageCount > 0 {
+            if isStorageComplete && isNormalComplete {
+                indicatorBackView.backgroundColor = .clear
+                activityIndicator.stopAnimating()
+            }
+        }else{
+            if isNormalComplete {
+                indicatorBackView.backgroundColor = .clear
+                activityIndicator.stopAnimating()
+            }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "ShowSelectedItem" {
@@ -98,6 +135,8 @@ extension DetailViewController: UICollectionViewDataSource {
                     
                     if let index = collectionView.indexPath(for: cell) {
                         if index.item == indexPath.item {
+                            self.isStorageComplete = true
+                            self.configIndicator()
                             let img = UIImage(data: data!)
                             cell.imageView.image = img
                         }
@@ -117,6 +156,8 @@ extension DetailViewController: UICollectionViewDataSource {
                 DispatchQueue.main.async {
                     if let index = collectionView.indexPath(for: cell){
                         if index.item == indexPath.item {
+                            self.isNormalComplete = true
+                            self.configIndicator()
                             cell.imageView.image = UIImage(data: data)
                         }
                     }

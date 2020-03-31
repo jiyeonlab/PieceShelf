@@ -197,7 +197,7 @@ class AddViewController: UIViewController {
             
             let newData = UserData(title: title, thumbnail: "Photo_\(identifier)", date: date, memo: memoField.text)
             
-            guard let savedImg = image!.jpegData(compressionQuality: 0.75) else { return }
+            guard let savedImg = image!.jpegData(compressionQuality: 0.5) else { return }
             let imageName = "Photo_\(identifier)"
             
             let riversRef = Storage.storage().reference().child((catecoryField.titleLabel?.text)!).child(imageName)

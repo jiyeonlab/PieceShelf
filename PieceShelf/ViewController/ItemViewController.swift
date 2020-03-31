@@ -22,6 +22,8 @@ class ItemViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var memoView: UITextView!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var activityBackView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         imageViewHeight.constant = view.frame.height / 1.6
@@ -33,6 +35,8 @@ class ItemViewController: UIViewController {
         
         configLabel()
         configMemo()
+        
+        activityIndicator.startAnimating()
     }
     
     func configLabel(){
@@ -65,6 +69,8 @@ class ItemViewController: UIViewController {
                 if let error = error {
                     print("다운로드 에러 \(error)")
                 }else{
+                    self.activityBackView.backgroundColor = .clear
+                    self.activityIndicator.stopAnimating()
                     let img = UIImage(data: data!)
                     self.imageView.image = img
                 }
@@ -79,6 +85,8 @@ class ItemViewController: UIViewController {
                 }
                 
                 DispatchQueue.main.async {
+                    self.activityBackView.backgroundColor = .clear
+                    self.activityIndicator.stopAnimating()
                     self.imageView.image = UIImage(data: thumbnail)
                 }
             }

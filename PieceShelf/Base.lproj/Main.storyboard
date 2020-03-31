@@ -338,9 +338,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xQP-TX-68D">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="lYV-EY-gaO">
+                                        <rect key="frame" x="188.5" y="357.5" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="lYV-EY-gaO" firstAttribute="centerX" secondItem="xQP-TX-68D" secondAttribute="centerX" id="hfO-bV-fXC"/>
+                                    <constraint firstItem="lYV-EY-gaO" firstAttribute="centerY" secondItem="xQP-TX-68D" secondAttribute="centerY" constant="-28" id="jy6-Is-zuj"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="xQP-TX-68D" firstAttribute="trailing" secondItem="L3L-Vu-oN6" secondAttribute="trailing" id="0Xm-8t-1Fl"/>
+                            <constraint firstItem="xQP-TX-68D" firstAttribute="top" secondItem="ewy-vA-8RG" secondAttribute="bottom" constant="-56" id="6Kd-tu-aLS"/>
                             <constraint firstItem="Svw-MY-9Mb" firstAttribute="trailing" secondItem="L3L-Vu-oN6" secondAttribute="trailing" id="6kC-1C-Cnz"/>
                             <constraint firstItem="nKL-VK-Ycl" firstAttribute="top" secondItem="Svw-MY-9Mb" secondAttribute="bottom" constant="10" id="8UF-Ta-Wwb"/>
                             <constraint firstItem="ewy-vA-8RG" firstAttribute="leading" secondItem="L3L-Vu-oN6" secondAttribute="leading" id="8Wu-we-IEJ"/>
@@ -349,8 +364,10 @@
                             <constraint firstItem="nKL-VK-Ycl" firstAttribute="leading" secondItem="L3L-Vu-oN6" secondAttribute="leading" constant="18" id="Rjg-XW-sAw"/>
                             <constraint firstItem="nKL-VK-Ycl" firstAttribute="trailing" secondItem="L3L-Vu-oN6" secondAttribute="trailing" constant="-8" id="WgD-Yn-gc7"/>
                             <constraint firstItem="irH-lJ-YXk" firstAttribute="top" secondItem="CeE-GR-nRJ" secondAttribute="top" id="Wmi-oX-cgg"/>
+                            <constraint firstItem="xQP-TX-68D" firstAttribute="bottom" secondItem="L3L-Vu-oN6" secondAttribute="bottom" id="ePQ-Cg-XaR"/>
                             <constraint firstItem="nKL-VK-Ycl" firstAttribute="bottom" secondItem="L3L-Vu-oN6" secondAttribute="bottom" constant="20" id="ekD-Wn-gBe"/>
                             <constraint firstItem="ewy-vA-8RG" firstAttribute="trailing" secondItem="L3L-Vu-oN6" secondAttribute="trailing" id="epq-Pn-f6J"/>
+                            <constraint firstItem="xQP-TX-68D" firstAttribute="leading" secondItem="L3L-Vu-oN6" secondAttribute="leading" id="psC-xf-t2s"/>
                             <constraint firstItem="irH-lJ-YXk" firstAttribute="leading" secondItem="L3L-Vu-oN6" secondAttribute="leading" id="x1f-7J-asj"/>
                             <constraint firstItem="irH-lJ-YXk" firstAttribute="trailing" secondItem="L3L-Vu-oN6" secondAttribute="trailing" id="x9k-i9-KyL"/>
                             <constraint firstItem="Svw-MY-9Mb" firstAttribute="top" secondItem="irH-lJ-YXk" secondAttribute="bottom" id="zp3-Oz-kQd"/>
@@ -358,6 +375,8 @@
                         <viewLayoutGuide key="safeArea" id="L3L-Vu-oN6"/>
                     </view>
                     <connections>
+                        <outlet property="activityBackView" destination="xQP-TX-68D" id="CHy-V4-rzH"/>
+                        <outlet property="activityIndicator" destination="lYV-EY-gaO" id="cYV-GQ-U1s"/>
                         <outlet property="dateLabel" destination="eP8-4F-ahs" id="yLY-J7-zmR"/>
                         <outlet property="imageView" destination="irH-lJ-YXk" id="uyh-yp-Fuw"/>
                         <outlet property="imageViewHeight" destination="hUc-bh-WQM" id="5tA-UL-B1G"/>
@@ -413,11 +432,24 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kcw-wu-Qp4">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Nez-OF-yS4">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="4FK-xg-5ay" firstAttribute="leading" secondItem="OxF-K8-I3L" secondAttribute="leading" id="4Ba-ig-tnU"/>
+                            <constraint firstItem="kcw-wu-Qp4" firstAttribute="leading" secondItem="OxF-K8-I3L" secondAttribute="leading" id="59a-Y4-CqC"/>
+                            <constraint firstItem="OxF-K8-I3L" firstAttribute="bottom" secondItem="kcw-wu-Qp4" secondAttribute="bottom" id="7VE-CG-EWL"/>
+                            <constraint firstItem="kcw-wu-Qp4" firstAttribute="top" secondItem="OxF-K8-I3L" secondAttribute="top" id="Hhj-Lb-qwE"/>
                             <constraint firstItem="4FK-xg-5ay" firstAttribute="top" secondItem="OxF-K8-I3L" secondAttribute="top" id="Q01-kn-ib1"/>
+                            <constraint firstItem="Nez-OF-yS4" firstAttribute="centerY" secondItem="2ZI-3h-CFL" secondAttribute="centerY" id="cWT-ms-N1z"/>
+                            <constraint firstItem="Nez-OF-yS4" firstAttribute="centerX" secondItem="2ZI-3h-CFL" secondAttribute="centerX" id="nLG-mT-II9"/>
+                            <constraint firstItem="OxF-K8-I3L" firstAttribute="trailing" secondItem="kcw-wu-Qp4" secondAttribute="trailing" id="pQP-Ny-6Nb"/>
                             <constraint firstItem="4FK-xg-5ay" firstAttribute="bottom" secondItem="OxF-K8-I3L" secondAttribute="bottom" id="pvc-tS-UDU"/>
                             <constraint firstItem="4FK-xg-5ay" firstAttribute="trailing" secondItem="OxF-K8-I3L" secondAttribute="trailing" id="xeR-pc-n2r"/>
                         </constraints>
@@ -432,7 +464,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="Nez-OF-yS4" id="FIm-FR-igg"/>
                         <outlet property="collectionView" destination="4FK-xg-5ay" id="tep-EU-cM1"/>
+                        <outlet property="indicatorBackView" destination="kcw-wu-Qp4" id="XZ8-yZ-fGd"/>
                         <segue destination="QHw-bL-VsL" kind="presentation" identifier="ShowSelectedItem" id="cSL-oE-EB7"/>
                     </connections>
                 </viewController>
