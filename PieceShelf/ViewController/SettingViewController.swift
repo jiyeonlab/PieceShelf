@@ -87,6 +87,7 @@ class SettingViewController: UIViewController {
     // Firebase에서 해당 카테고리 삭제하기
     func deleteCatecory(what catecory: String) {
         ref.child("UserData").child(catecory).removeValue()
+        readCatecoryList()
     }
     
     // 카테고리 편집하기
@@ -123,6 +124,7 @@ extension SettingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let catecoryCell = tableView.dequeueReusableCell(withIdentifier: CatecoryTableViewCell.identifier, for: indexPath)
         
+        print("!!!!!!!! \(indexPath.row)")
         catecoryCell.textLabel?.text = "\(catecory[indexPath.row])"
        
         return catecoryCell
@@ -135,9 +137,11 @@ extension SettingViewController: UITableViewDataSource {
     // 편집 모드에서 왼쪽 버튼을 누를 경우, 테이블에서 삭제하고, 애니메이션까지 보여줌.
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        deleteCatecory(what: catecory[indexPath.row])
-        catecory.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .fade)
+        if editingStyle == .delete {
+            deleteCatecory(what: catecory[indexPath.row])
+            catecory.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
     
 }

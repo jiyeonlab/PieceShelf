@@ -18,7 +18,7 @@ class Catecory {
         
         Database.database().reference().child("UserData").observe(.value) { snapshot in
             
-//            self.catecoryList.removeAll()
+            self.catecoryList.removeAll()
             
             for child in snapshot.children {
                 let snap = child as! DataSnapshot
@@ -26,7 +26,7 @@ class Catecory {
                 self.catecoryList.append(key)
             }
             self.catecoryList = self.removeDuplication(in: self.catecoryList)
-            print("리스트에 변화가 있음")
+            print("리스트에 변화가 있음 \(self.catecoryList)")
             NotificationCenter.default.post(name: LoadCatecoryListNotification, object: self)
         }
     }
