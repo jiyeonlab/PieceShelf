@@ -13,14 +13,14 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var indicatorBackView: UIView!
 
     var catecoryTitle: String?
     var itemsList: [[String:Any]]?
     
     var storageCount = 0
-    var isStorageComplete = false
-    var isNormalComplete = false
+    
+    var downloadFromStorage: (() -> Void) = {}
+    var downloadFromURL: (() -> Void) = {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +30,7 @@ class DetailViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.isHidden = true
         
         guard let title = catecoryTitle else { return }
         navigationItem.title = title
@@ -58,19 +59,32 @@ class DetailViewController: UIViewController {
           
         }
 
+        configIndicator()
         print("스토리지 갯수 \(storageCount)")
     }
     
     func configIndicator(){
+        
         if storageCount > 0 {
-            if isStorageComplete && isNormalComplete {
-                indicatorBackView.backgroundColor = .clear
-                activityIndicator.stopAnimating()
+            // 모든 이미지가 storage에서 받아오는 것일때
+            if itemsList?.count == storageCount {
+                downloadFromStorage = {
+                    self.collectionView.isHidden = false
+                    self.activityIndicator.stopAnimating()
+                }
+            }else{
+                downloadFromURL = {
+                    self.downloadFromStorage = {
+                        self.collectionView.isHidden = false
+                        self.activityIndicator.stopAnimating()
+                    }
+                }
             }
+            
         }else{
-            if isNormalComplete {
-                indicatorBackView.backgroundColor = .clear
-                activityIndicator.stopAnimating()
+            downloadFromURL = {
+                self.collectionView.isHidden = false
+                self.activityIndicator.stopAnimating()
             }
         }
     }
@@ -137,8 +151,8 @@ extension DetailViewController: UICollectionViewDataSource {
                     
                     if let index = collectionView.indexPath(for: cell) {
                         if index.item == indexPath.item {
-                            self.isStorageComplete = true
-                            self.configIndicator()
+                            self.downloadFromStorage()
+                            
                             let img = UIImage(data: data!)
                             cell.imageView.image = img
                         }
@@ -158,9 +172,8 @@ extension DetailViewController: UICollectionViewDataSource {
                 DispatchQueue.main.async {
                     if let index = collectionView.indexPath(for: cell){
                         if index.item == indexPath.item {
-                            self.isNormalComplete = true
-                            self.configIndicator()
                             cell.imageView.image = UIImage(data: data)
+                            self.downloadFromURL()
                         }
                     }
                 }
