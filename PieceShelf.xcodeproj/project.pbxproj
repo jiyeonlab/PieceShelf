@@ -33,6 +33,7 @@
 		9074582F2430F7C500E2928C /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9074582D2430F7C500E2928C /* ItemCollectionViewCell.swift */; };
 		907458302430F7C500E2928C /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9074582E2430F7C500E2928C /* ItemCollectionViewCell.xib */; };
 		90798A942430EC5B005FFA27 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90798A932430EC5B005FFA27 /* DetailViewController.swift */; };
+		907D0D8F243637BE000EBEF7 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907D0D8E243637BE000EBEF7 /* Extension+UIViewController.swift */; };
 		90F7FAE62431EE6300672FB8 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F7FAE52431EE6300672FB8 /* ItemViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		9074582D2430F7C500E2928C /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		9074582E2430F7C500E2928C /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		90798A932430EC5B005FFA27 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		907D0D8E243637BE000EBEF7 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
 		90F7FAE52431EE6300672FB8 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		D57CDD3C168E4537A91F1435 /* Pods-PieceShelfTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PieceShelfTests.debug.xcconfig"; path = "Target Support Files/Pods-PieceShelfTests/Pods-PieceShelfTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,6 +192,7 @@
 				9054ED90242F166100D28C20 /* AddViewController.swift */,
 				9054ED93242F1A5000D28C20 /* WebSearchViewController.swift */,
 				9054EDA9243086A100D28C20 /* SettingViewController.swift */,
+				907D0D8E243637BE000EBEF7 /* Extension+UIViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 			files = (
 				9054ED9C242F37D500D28C20 /* GlobalConstant.swift in Sources */,
 				9054EDAC24308FD700D28C20 /* CatecoryTableViewCell.swift in Sources */,
+				907D0D8F243637BE000EBEF7 /* Extension+UIViewController.swift in Sources */,
 				90798A942430EC5B005FFA27 /* DetailViewController.swift in Sources */,
 				9044D15E2431D95B00926FC0 /* DetailCollectionViewCell.swift in Sources */,
 				9054EDAA243086A100D28C20 /* SettingViewController.swift in Sources */,

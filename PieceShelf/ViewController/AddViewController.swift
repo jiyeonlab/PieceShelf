@@ -321,15 +321,11 @@ extension AddViewController: SendThumbnailDelegate {
         thumbnailState = .web
         
         DispatchQueue.global().async {
-            guard let thumbnailURL = URL(string: url) else {
-                return
-            }
-            guard let thumbnail = try? Data(contentsOf: thumbnailURL) else {
-                return
-            }
+            
+            let imgData = requestImgData(url: url)
             
             DispatchQueue.main.async {
-                self.imageView.image = UIImage(data: thumbnail)
+                self.imageView.image = UIImage(data: imgData)
                 self.imageAddButton.isHidden = true
                 self.isFilledImg = true
             }

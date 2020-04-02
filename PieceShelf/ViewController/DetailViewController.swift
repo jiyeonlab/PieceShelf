@@ -153,7 +153,8 @@ extension DetailViewController: UICollectionViewDataSource {
                         if index.item == indexPath.item {
                             self.downloadFromStorage()
                             
-                            let img = UIImage(data: data!)
+                            guard let imgData = data else { return }
+                            let img = UIImage(data: imgData)
                             cell.imageView.image = img
                         }
                     }
@@ -162,17 +163,12 @@ extension DetailViewController: UICollectionViewDataSource {
             }
         }else{
             DispatchQueue.global().async {
-                guard let url = URL(string: imgURL) else {
-                    return
-                }
-                guard let data = try? Data(contentsOf: url) else {
-                    return
-                }
-                
+             
+                let imgData = requestImgData(url: imgURL)
                 DispatchQueue.main.async {
                     if let index = collectionView.indexPath(for: cell){
                         if index.item == indexPath.item {
-                            cell.imageView.image = UIImage(data: data)
+                            cell.imageView.image = UIImage(data: imgData)
                             self.downloadFromURL()
                         }
                     }

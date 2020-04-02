@@ -72,23 +72,21 @@ class ItemViewController: UIViewController {
                 }else{
                     self.activityBackView.backgroundColor = .clear
                     self.activityIndicator.stopAnimating()
-                    let img = UIImage(data: data!)
+                    
+                    guard let imgData = data else { return }
+                    let img = UIImage(data: imgData)
                     self.imageView.image = img
                 }
             }
         }else{
             DispatchQueue.global().async {
-                guard let thumbnailURL = URL(string: thumbnailString) else {
-                    return
-                }
-                guard let thumbnail = try? Data(contentsOf: thumbnailURL) else {
-                    return
-                }
+               
+                let imgData = requestImgData(url: thumbnailString)
                 
                 DispatchQueue.main.async {
                     self.activityBackView.backgroundColor = .clear
                     self.activityIndicator.stopAnimating()
-                    self.imageView.image = UIImage(data: thumbnail)
+                    self.imageView.image = UIImage(data: imgData)
                 }
             }
         }

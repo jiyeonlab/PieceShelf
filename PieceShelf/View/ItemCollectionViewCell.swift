@@ -60,17 +60,13 @@ class ItemCollectionViewCell: UICollectionViewCell {
             }
         }else{
             DispatchQueue.global().async {
-                guard let thumbnailURL = URL(string: thumbnailString) else {
-                    return
-                }
-                guard let thumbnail = try? Data(contentsOf: thumbnailURL) else {
-                    return
-                }
+               
+                let imgData = requestImgData(url: thumbnailString)
                 
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
                     self.title.text = itemTitle
-                    self.imageView.image = UIImage(data: thumbnail)
+                    self.imageView.image = UIImage(data: imgData)
                 }
             }
         }

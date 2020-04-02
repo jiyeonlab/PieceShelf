@@ -111,15 +111,11 @@ extension WebSearchViewController: UICollectionViewDataSource {
         thumbnailCell.imageView.image = nil
         
         DispatchQueue.global().async {
-            guard let thumbnailURL = URL(string: thumbnailInfo) else {
-                return
-            }
-            guard let thumbnail = try? Data(contentsOf: thumbnailURL) else {
-                return
-            }
+           
+            let imgData = requestImgData(url: thumbnailInfo)
             
             DispatchQueue.main.async {
-                thumbnailCell.imageView.image = UIImage(data: thumbnail)
+                thumbnailCell.imageView.image = UIImage(data: imgData)
             }
         }
         
