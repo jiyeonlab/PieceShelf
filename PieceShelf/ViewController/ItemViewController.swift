@@ -27,7 +27,7 @@ class ItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageViewHeight.constant = view.frame.height / 1.6
+        imageViewHeight.constant = view.frame.height / Constant.itemHeightRatio
         
         fetchImg()
         

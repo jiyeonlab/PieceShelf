@@ -18,9 +18,6 @@ class DetailViewController: UIViewController {
     var catecoryTitle: String?
     var itemsList: [[String:Any]]?
     
-    // 한 줄에 collection cell을 몇 개 넣을건지
-    let itemsPerRows: CGFloat = 3.0
-    
     var storageCount = 0
     var isStorageComplete = false
     var isNormalComplete = false
@@ -196,8 +193,8 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let width = collectionView.bounds.width - (Constant.cellSpacing * 2)
-        let widthPerItems = width / itemsPerRows
+        let width = collectionView.bounds.width - Constant.detailCellWidth
+        let widthPerItems = width / Constant.itemsPerRows
 
         let height = widthPerItems * Constant.itemsRatio
 

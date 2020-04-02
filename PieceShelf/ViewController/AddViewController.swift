@@ -69,7 +69,7 @@ class AddViewController: UIViewController {
         
         // imageView Height 조정
         imageViewHeight.constant = view.frame.height / Constant.imageViewHeightRatio
-        plusButtonHeight.constant = imageViewHeight.constant / 2
+        plusButtonHeight.constant = imageViewHeight.constant / Constant.plusButtonHeightRatio
         // Firebase DB 참조
         ref = Database.database().reference()
         
@@ -231,9 +231,8 @@ class AddViewController: UIViewController {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             
-            print("title \(isTitle) memo \(isMemo)")
             if isTitle {
-                self.view.frame.origin.y = -10
+                self.view.frame.origin.y = Constant.movingViewOrigin
             }else if isMemo {
                 self.view.frame.origin.y = -keyboardHeight
             }

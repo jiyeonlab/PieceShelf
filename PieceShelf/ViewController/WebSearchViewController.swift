@@ -20,9 +20,6 @@ class WebSearchViewController: UIViewController {
     // SendThumbnailDelegate 변수
     var sendThumbnailDelegate: SendThumbnailDelegate?
     
-    // 한 줄에 collection cell을 몇 개 넣을건지
-    let itemsPerRows: CGFloat = 3.0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -163,7 +160,7 @@ extension WebSearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         let width = collectionView.bounds.width
-        let widthPerItems = width / itemsPerRows
+        let widthPerItems = width / Constant.itemsPerRows
 
         let height = widthPerItems * Constant.itemsRatio
 
