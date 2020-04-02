@@ -12,10 +12,7 @@ import Firebase
 class AddViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
-    
-    lazy var imagePicker = UIImagePickerController()
     @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var plusButtonHeight: NSLayoutConstraint!
     @IBOutlet weak var imageAddButton: UILabel!
     @IBOutlet weak var titleField: UITextField!
@@ -23,6 +20,8 @@ class AddViewController: UIViewController {
     @IBOutlet weak var catecoryField: UIButton!
     @IBOutlet weak var memoField: UITextView!
     
+    lazy var imagePicker = UIImagePickerController()
+
     // 카테고리 picker 추가
     var customPickerView: UIPickerView?
     
@@ -95,7 +94,6 @@ class AddViewController: UIViewController {
             // WebSearchVC에서 선택한 썸네일 데이터를 받기 위해, 추가
             webSearchVC.sendThumbnailDelegate = self
             
-            //            webSearchVC.modalPresentationStyle = .fullScreen
             self.present(webSearchVC, animated: true)
         }
         let albumSearch = UIAlertAction(title: "앨범에서 가져오기", style: .default) { _ in
@@ -182,7 +180,6 @@ class AddViewController: UIViewController {
                 
                 return
             }
-//            let newData = UserData(thumbnail: thumbnailInfo, date: date, memo: memoField.text)
             
             let newData = UserData(title: title, thumbnail: thumbnailInfo, date: date, memo: memoField.text)
             
@@ -193,7 +190,6 @@ class AddViewController: UIViewController {
             
             let identifier = String(describing: Date.init())
             
-//            let newData = UserData(thumbnail: "Photo_\(identifier)", date: date, memo: memoField.text)
             
             let newData = UserData(title: title, thumbnail: "Photo_\(identifier)", date: date, memo: memoField.text)
             
@@ -256,7 +252,6 @@ class AddViewController: UIViewController {
 extension AddViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        print("제목 수정 시작")
         isTitle = true
     }
     

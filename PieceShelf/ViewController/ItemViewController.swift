@@ -24,6 +24,7 @@ class ItemViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var activityBackView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imageViewHeight.constant = view.frame.height / 1.6

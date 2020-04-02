@@ -42,9 +42,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
         
         guard let itemTitle = data?["Title"] as? String else { return }
         guard let thumbnailString = data?["Thumbnail"] as? String else { return }
-        
-//        title.adjustsFontSizeToFitWidth = true
-        
+                
         // thumbnail의 경우, storage에 저장된 경우를 걸러야 함.
         if thumbnailString.hasPrefix("Photo_"){
             // TODO: Storage에서 불러와야

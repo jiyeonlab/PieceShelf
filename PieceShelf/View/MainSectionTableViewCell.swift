@@ -12,16 +12,15 @@ import Firebase
 class MainSectionTableViewCell: UITableViewCell {
     
     static let identifier = "MainSectionTableViewCell"
-    @IBOutlet weak var catecoryName: UILabel!
     
     // presentDelegate 변수
     var presentDelegate: PresentDelegate?
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    
     // 현재 카테고리에 있는 title 저장
     var items = [[String:Any]]()
     
+    @IBOutlet weak var catecoryName: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -98,8 +97,6 @@ extension MainSectionTableViewCell: UICollectionViewDataSource {
 
 extension MainSectionTableViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("현재 카테고리 \(catecoryName.text!)")
-        print("____________________________ \(items[indexPath.item])")
         
         guard let catecory = catecoryName.text else { return }
         presentDelegate?.openItemVC(by: catecory, with: items[indexPath.item])

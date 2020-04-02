@@ -12,17 +12,18 @@ import Firebase
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var indicatorBackView: UIView!
+
     var catecoryTitle: String?
     var itemsList: [[String:Any]]?
     
     // 한 줄에 collection cell을 몇 개 넣을건지
     let itemsPerRows: CGFloat = 3.0
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var storageCount = 0
     var isStorageComplete = false
     var isNormalComplete = false
-    @IBOutlet weak var indicatorBackView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +81,6 @@ class DetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "ShowSelectedItem" {
-            print("!!!!")
             guard let itemVC = segue.destination as? ItemViewController else {
                 return
             }

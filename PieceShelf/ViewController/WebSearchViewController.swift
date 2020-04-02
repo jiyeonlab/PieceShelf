@@ -82,7 +82,6 @@ extension WebSearchViewController: UISearchBarDelegate {
                     self.thumbnail.removeAll()
                     
                     result.items.forEach { index in
-//                        self.thumbnail.append(index.thumbnail ?? "")
                         self.thumbnail.append(index.link ?? "")
                     }
                     self.collectionView.reloadData()
@@ -123,13 +122,7 @@ extension WebSearchViewController: UICollectionViewDataSource {
             }
             
             DispatchQueue.main.async {
-//                if let index = collectionView.indexPath(for: thumbnailCell) {
-//                    if index.item == indexPath.item {
-//                        thumbnailCell.imageView.image = UIImage(data: thumbnail)
-//                    }
-//                }
                 thumbnailCell.imageView.image = UIImage(data: thumbnail)
-
             }
         }
         
@@ -169,8 +162,6 @@ extension WebSearchViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        print("Flow Layout")
-//        let width = view.frame.width
         let width = collectionView.bounds.width
         let widthPerItems = width / itemsPerRows
 

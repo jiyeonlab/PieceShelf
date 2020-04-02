@@ -81,7 +81,6 @@ extension MainViewController: PresentDelegate {
     }
     
     func openItemVC(by catecory: String, with data: [String : Any]) {
-//        performSegue(withIdentifier: "ItemVC", sender: data)
         
         guard let itemVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ItemVC") as? ItemViewController else {
             return
@@ -89,7 +88,6 @@ extension MainViewController: PresentDelegate {
         
         itemVC.catecory = catecory
         itemVC.data = data
-//        itemVC.modalPresentationStyle = .fullScreen
         present(itemVC, animated: true)
     }
 }
