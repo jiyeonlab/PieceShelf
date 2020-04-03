@@ -17,8 +17,10 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.navigationBar.prefersLargeTitles = true        
         tableView.dataSource = self
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
         
         // MainSectionTableViewCell의 xib를 등록.
         let nibName = UINib(nibName: "MainSectionTableViewCell", bundle: nil)
@@ -28,17 +30,6 @@ class MainViewController: UIViewController {
         
         // Catecory List가 다 받아지면 노티 받기 위함.
         NotificationCenter.default.addObserver(self, selector: #selector(showCatecory(_:)), name: LoadCatecoryListNotification, object: nil)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = false
-
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     @objc func showCatecory(_ notification: Notification) {

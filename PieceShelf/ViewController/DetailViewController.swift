@@ -24,9 +24,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        navigationController?.navigationBar.prefersLargeTitles = false
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -34,6 +31,9 @@ class DetailViewController: UIViewController {
         
         guard let title = catecoryTitle else { return }
         navigationItem.title = title
+        
+        // DetailVC는 MainVC처럼 large title로 나오게 하지 않음.
+        navigationItem.largeTitleDisplayMode = .never
         
         // 현재 카테고리에 해당하는 db를 계속 observing
         observeInCatecory()
